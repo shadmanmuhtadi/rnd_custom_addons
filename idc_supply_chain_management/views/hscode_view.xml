@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--tree view for the menu item-->
+    <record id="view_scm_hscode_tree" model="ir.ui.view">
+        <field name="name">scm.hscode.tree</field>
+        <field name="model">scm.hscode</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="hs_code"/>
+                <field name="insurance" widget="percentage"/>
+                <field name="landing" widget="percentage"/>
+                <field name="assvalue"/>
+                <field name="cd" widget="percentage"/>
+                <field name="rd" widget="percentage"/>
+                <field name="sd" widget="percentage"/>
+                <field name="vat" widget="percentage"/>
+                <field name="ait" widget="percentage"/>
+                <field name="at" widget="percentage"/>
+                <field name="total_tti" />
+            </tree>
+        </field>
+    </record>
+
+
+
+<!--form view for the menu item-->
+    <record id="view_scm_hscode_form" model="ir.ui.view">
+        <field name="name">scm.hscode.form</field>
+        <field name="model">scm.hscode</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="hs_code"/>
+                            <field name="insurance" widget="percentage"/>
+                            <field name="landing" widget="percentage"/>
+                            <field name="assvalue"/>
+                        </group>
+                        <group>
+                            <field name="cd" widget="percentage"/>
+                            <field name="rd" widget="percentage"/>
+                            <field name="sd" widget="percentage"/>
+                            <field name="vat" widget="percentage"/>
+                            <field name="ait" widget="percentage"/>
+                            <field name="at" widget="percentage"/>
+                            <field name="total_tti" />
+                        </group>                                                           
+                    </group>
+
+                </sheet>
+                <!-- Chatter -->
+                <!-- <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div> -->
+            </form>
+        </field>
+    </record>
+
+<!--action for the child menu item-->
+    <record id="action_scm_hs_code" model="ir.actions.act_window">
+        <field name="name">HS Code</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scm.hscode</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first HS Code!
+            </p>
+        </field>
+    </record>
+
+<!-- HS Code menu on (purchase/product) -->
+    <menuitem
+        id="menu_hs_code"
+        name="HS Code"
+        action="action_scm_hs_code"
+        parent="purchase.menu_purchase_products"
+        sequence="22"
+    />
+
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--to show this while creating user a-->
+        <record model="ir.module.category" id="module_category_offtake">
+            <field name="name">Offtake Management</field> <!--will be viewd as application name in the group-->
+            <field name="description">Category for Offtake</field>
+            <field name="sequence">45</field>
+        </record>
+
+        <record id="group_offtake_ecom" model="res.groups">
+            <field name="name">ECOM</field>
+            <field name="category_id" ref="module_category_offtake"/>
+        </record>
+
+        <record id="group_offtake_mt" model="res.groups">
+            <field name="name">MT</field>
+            <field name="category_id" ref="module_category_offtake"/>
+        </record>
+
+        <record id="group_offtake_fdn" model="res.groups">
+            <field name="name">FDN</field>
+            <field name="category_id" ref="module_category_offtake"/>
+        </record>
+        
+        <record id="group_offtake_all" model="res.groups">
+            <field name="name">OFFTAKE</field>
+            <field name="category_id" ref="module_category_offtake"/>
+        </record>
+
+        <record id="group_offtake_MD" model="res.groups">
+            <field name="name">MD</field>
+            <field name="category_id" ref="module_category_offtake"/>
+            <field name="implied_ids" eval="[(4, ref('group_offtake_ecom')), (4, ref('group_offtake_mt')), (4, ref('group_offtake_fdn')), (4, ref('group_offtake_all'))]"/>
+        </record>
+    </data>
+    
+</odoo>

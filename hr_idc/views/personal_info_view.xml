@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_personal_form_inherit" model="ir.ui.view">
+        <field name="name">personal.info.inherit</field> <!--name of the view-->
+        <field name="model">hr.employee</field> <!--model we have inherited-->
+        <field name="inherit_id" ref="hr.view_employee_form"/> <!--view we have inherited--> 
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile_phone']" position="after">
+                <field name="personal_contact"/>
+            </xpath>
+            <xpath expr="//field[@name='work_email']" position="after">
+                <field name="personal_email"/>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="after">
+                <field name="designation_id"/>
+                <field name="job_id" string='Job Role'/>
+                <field name="employee_id"/>
+            </xpath>
+            <!-- employment info -->
+            <xpath expr="//div[@id='o_work_employee_main']" position="inside">
+                <div>
+                    <group>
+                        <group name="empinfo" string="Employment Info">
+                            <field name="designation_id"/>
+                            <field name="termination_date" string='Separation Date'/>
+                            <field name="emp_source_id"/>
+                            <field name="referred_by_id"/>
+                            <field name="appointment_letter_provided"/>
+                        </group>
+                        <group name="sim" string="Sim Eligibility">
+                            <field name="sim_eligibility"/>
+                            <label for="sim_bundle_amount"/>
+                            <div class="o_row" name="div_tk_sim_bundle_amount">
+                                <field name="sim_bundle_amount" groups="hr.group_hr_user"/>
+                                    <span>Tk</span>
+                            </div>
+                        </group>
+                    </group>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='o_work_employee_container']" position="after">
+                <div>
+                    <group name="employment_summery_ids" colspan="7" string="Employment Summery">
+                        <field name="employment_summery_ids">
+                            <tree editable="bottom">
+                                <field name="designation_id"/>
+                                <field name="start_date"/>
+                                <field name="end_date"/>
+                                <field name="service_length"/>
+                                <field name="increment_amount"/>
+                                <field name="increment_percentage" widget="percentage"/>
+                                <field name="promotion_date"/>
+                            </tree>
+                        </field>
+                    </group>
+                </div>
+            </xpath>
+            <xpath expr="//div[@id='o_work_employee_container']" position="after">
+                <div>
+                    <group name="employee_training_info_ids" colspan="7" string="Employee Training Summery">
+                        <field name="employee_training_info_ids">
+                            <tree editable="bottom">
+                                <field name="training_title"/>
+                                <field name="train_institute_id"/>
+                                <field name="train_location"/>
+                                <field name="country_id"/>
+                                <field name="training_year"  options="{'datepicker':{'showType':'years'}}"/>
+                                <field name="training_duration"/>
+                                <field name="training_facilator"/>
+                            </tree>
+                        </field>
+                    </group>
+                </div>
+            </xpath>
+            <!--  -->
+            <xpath expr="//page[@name='personal_information']/group/group[2]" position="after">
+                <group name="others" string="Others">
+                    <field name="religion"/>
+                    <field name="blood_grp"/>
+                    <field name="t_shirt_size"/>
+                </group>
+                <group name="nid_tin" string="NID and TIN">
+                    <field name="nid_no"/>
+                    <field name="tin_no"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='public']" position="after">
+                <page name="basic_info" string="Basic Information">
+                    <group>
+                        <group string='Present Address' name="present_address">
+                            <label for="present_house" string="Present Address"/>
+                            <div class="o_address_format">
+                                <field name="present_house" placeholder="House,Road..." class="o_address_street"/>
+                                <field name="present_area" placeholder="Area..." class="o_address_street"/>
+                                <field name="present_Thana" placeholder="Thana" class="o_address_city"/>
+                                <field name="present_district" class="o_address_state" placeholder="District" options="{'no_open': True, 'no_quick_create': True}" context="{'default_country_id': country_id}"/>
+                                <field name="present_division" placeholder="Division" class="o_address_zip"/>
+                                <field name="present_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                        </group>
+                        <group string='Permanent Address' name="perm_address">
+                            <label for="permanent_house" string="Permanent Address"/>
+                            <div class="o_address_format">
+                                <field name="permanent_house" placeholder="House,Road..." class="o_address_street"/>
+                                <field name="permanent_area" placeholder="Area..." class="o_address_street"/>
+                                <field name="permanent_Thana" placeholder="Thana" class="o_address_city"/>
+                                <field name="permanent_district" class="o_address_state" placeholder="District" options="{'no_open': True, 'no_quick_create': True}" context="{'default_country_id': country_id}"/>
+                                <field name="permanent_division" placeholder="Division" class="o_address_zip"/>
+                                <field name="permanent_country_id" placeholder="Country" class="o_address_country" options='{"no_open": True, "no_create": True}'/>
+                            </div>
+                        </group>
+                        <group string='Basic Info' name="basic">
+                            <field name="recruitment_type"/>
+                            <!-- <field name="employee_id"/> -->
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']" position="after">
+                <page name="nomiee_and_ref" string="Nominee and Reference">
+                    <group>
+                        <group string='Nominee' name="nominee_group">
+
+                                <field name="nominee_name"/>
+                                <field name="nominee_relation_id"/>
+                                <field name="nominee_dob"/>
+                                <field name="nominee_gen"/>
+                                <field name="nominee_nid"/>
+                                <field name="nominee_bid"/>
+                                <field name="nominee_mobile_banking"/>
+                                <field name="nominee_mobile_banking_ac"/>
+                            
+                                <field name="nominee_present_add"/>
+                                <field name="nominee_permanent_add"/>
+                                <field name="nominee_email" widget="email"/>
+                                <field name="nominee_phone" widget="phone" options="{'enable_sms': false}"/>
+                        </group>
+                        <group string='Reference' name="reference_group">
+                            <field name="reference_name"/>
+                            <field name="reference_rel"/>
+                            <field name="duration_of_knowing" placeholder='Date From..'/>
+                            <field name="ref_present_add"/>
+                            <field name="ref_permanent_add"/>
+                            <field name="ref_occupation_id"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']/group" position="after">
+                <group name="academic_ids" colspan="7" string="Academic Details">
+                    <field name="academic_ids">
+                        <tree editable="bottom">
+                            <field name="degree_title_id"/>
+                            <field name="degree_concentration_id"/>
+                            <field name="board_name"/>
+                            <field name="degree_institute_id"/>
+                            <field name="gpa"/>
+                            <field name="year_of_passing" options="{'datepicker': {'showType':'years'}}"/>
+                            <field name="country_id"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='personal_information']/group" position="after">
+                <group name="previous_employment_history_ids" colspan="6" string="Previous Employment Details">
+                    <field name="previous_employment_history_ids">
+                        <tree editable="bottom">
+                            <field name="previous_org_id"/>
+                            <field name="previous_desig_id"/>
+                            <field name="previous_dept_id"/>
+                            <field name="previous_company_loc"/>
+                            <field name="prev_com_date_from"/>
+                            <field name="prev_com_date_to"/>
+                        </tree>
+                    </field>
+                </group>
+            </xpath>
+
+            <xpath expr="//field[@name='emergency_contact']" position="before">
+                <field name="emergency_contact_name"/>
+                <field name="emergency_contact_address"/>
+                <field name="emergency_contact_relation_id" string='Relationship'/>
+            </xpath>
+            <!--hiding fields-->
+            <xpath expr="//field[@name='address_home_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='coach_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='bank_account_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='lang']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+			<attribute name="string">PABX No</attribute>
+		</xpath>
+            
+        </field>
+    </record>
+
+    <record id="hr_employee_tree_inherit" model="ir.ui.view">
+        <field name="name">hr.employee.view.tree.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <field name="category_ids" position="after">
+                <field name="t_shirt_size"/>
+                <field name="religion" optional="show"/>
+                <field name="blood_grp" optional="show"/>
+                <field name="designation_id" optional="show"/>
+                <field name="employee_id" optional="show"/>
+                <field name="job_id" optional="show"/>
+
+            </field>
+        </field>
+    </record>
+
+</odoo>
+
+    <!-- <record id="view_personal_family_form_inherit" model="ir.ui.view">
+        <field name="name">personal.family.info.inherit</field> name of the view
+        <field name="model">hr.employee.family</field> model we have inherited
+        <field name="inherit_id" ref="hr_employee_updation.hr_employee_inherit_form_view"/> view we have inherited
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='member_contact']" position="after">
+                <field name="nid_family"/>
+                <field name="occupation_id"/>
+            </xpath>
+        </field>
+    </record> -->
+
+<!--
+
+widget="email"
+widget="phone" options="{'enable_sms': false}"
+personal_information
+-->

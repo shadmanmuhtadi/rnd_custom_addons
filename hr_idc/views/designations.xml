@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--tree view for the menu item-->
+    <record id="view_hr_employee_empdesignation_tree" model="ir.ui.view">
+        <field name="name">hr.employee.empdesignation.tree</field>
+        <field name="model">hr.employee.empdesignation</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="designation"/>
+                <field name="id"/>
+            </tree>
+        </field>
+    </record>
+<!--form view for the menu item-->
+    <record id="view_hr_employee_empdesignation_form" model="ir.ui.view">
+        <field name="name">hr.employee.empdesignation.form</field>
+        <field name="model">hr.employee.empdesignation</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="designation"/>
+                        </group>
+                        <group>
+                            <field name="id"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+<!--action for the child menu item-->
+    <record id="action_idc_hr_designation" model="ir.actions.act_window">
+        <field name="name">Designations</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.employee.empdesignation</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create you first Designation!
+            </p>
+        </field>
+    </record>
+<!--this is child menu-->
+    <menuitem
+        id="menu_hr_Designations_inherit"
+        name="Designations"
+        action="action_idc_hr_designation"
+        parent="menu_hr_master_data_inherit"
+        groups="hr.group_hr_manager"
+        sequence="2"/>
+</odoo>

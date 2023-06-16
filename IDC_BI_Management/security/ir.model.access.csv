@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.bi.report,access_bi_report,IDC_BI_Management.model_bi_report,IDC_BI_Management.group_bi_md,1,0,0,0
+access.bi.districtmd,access_bi_districtmd,IDC_BI_Management.model_bi_district,IDC_BI_Management.group_bi_md,1,0,0,0
+access.bi.districtgm,access_bi_districtgm,IDC_BI_Management.model_bi_district,IDC_BI_Management.group_bi_gm,1,0,0,0
+access.bi.districtsd,access_bi_districtsd,IDC_BI_Management.model_bi_district,IDC_BI_Management.group_bi_sd,1,0,0,0
+access.bi.kmdsd,access_bi_kmdsd,IDC_BI_Management.model_bi_kmd,IDC_BI_Management.group_bi_sd,1,0,0,0
+access.bi.fdn,access_bi_fdn,IDC_BI_Management.model_bi_fdn,IDC_BI_Management.group_bi_fdn,1,0,0,0
+access.bi.fdngm,access_bi_fdngm,IDC_BI_Management.model_bi_fdn,IDC_BI_Management.group_bi_gm,1,0,0,0

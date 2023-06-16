@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//form//header//field[@name='state']" position="replace">
+                <field name="state" 
+                widget="statusbar" 
+                statusbar_visible="draft,sent,purchase,lc_confirm"/>
+            </xpath> -->
+
+            <!-- statusbar     -->
+            <field name="state" position="replace">
+                <field name="state" widget="statusbar" 
+                    statusbar_visible="draft,sent,purchase,lc_confirm"/>
+            </field>
+
+            <xpath expr="//form//header//button[@name='button_confirm']" position="after">
+                <button name="action_in_lc" string="LC" class="oe_highlight" type="object" states="purchase"/>
+            </xpath>
+            <xpath expr="//button[@name='action_view_picking']" position="attributes">
+                <attribute name="states">lc_confirm</attribute>
+            </xpath>
+
+            <!-- adding renaming fields -->
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Principles</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_ref']" position="attributes">
+                <attribute name="string">Principles Reference</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_purchase_order_form_inherit1" model="ir.ui.view">
+        <field name="name">view.purchase.order.form.inherit1</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase_stock.purchase_order_view_form_inherit" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/button[@name='action_view_picking']" position="before">
+                <button name="action_in_lc" string="Lc Confirm" class="oe_highlight" type="object" states="purchase"/>
+            </xpath>
+             <xpath expr="//button[@name='action_view_picking']" position="attributes">
+                <attribute name="states">lc_confirm</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.purchase.order_form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Principles</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_ref']" position="attributes">
+                <attribute name="string">Principles Reference</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Renaming menu -->
+
+    <!-- <record model="ir.ui.menu" id="purchase.purchase_rfq">
+        <field name="name">Create for PI</field>
+    </record> -->
+
+    <record id="purchase.purchase_rfq" model="ir.actions.act_window">
+        <field name="name">Create PI</field>
+    </record>
+    
+    <record id="purchase.menu_purchase_rfq" model="ir.ui.menu">
+        <field name="name">PI</field>
+    </record>
+    <record id="purchase.purchase_form_action" model="ir.actions.act_window">
+        <field name="name">Create PO</field>
+    </record>
+    <record id="account.res_partner_action_supplier" model="ir.actions.act_window">
+        <field name="name">Principles</field>
+    </record>
+    <record id="purchase.menu_procurement_management_supplier_name" model="ir.ui.menu">
+        <field name="name">Principles</field>
+    </record>
+
+
+
+
+    <!-- <record id="hospital_statusbar" model="ir.ui.view">
+        <field name="name">hospital_statusbar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="inherit_id" ref="om_hospital.view_hospital_appointment_form"/>
+        <field name="arch" type="xml">
+            <field name="state" position="replace">
+                <field name="state" widget="statusbar" 
+                statusbar_visible="draft,in_consultation,test1,done,cancel"/>
+            </field>
+
+                <xpath expr="//form//header//button[@name='action_in_consultation']" position="after">
+                <button name="action_in_test" string="Test state" class="oe_highlight" type="object" states="in_consultation"/>
+            </xpath>
+            <xpath expr="//button[@name='action_done']" position="attributes">
+                <attribute name="states">test1</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
+</odoo>

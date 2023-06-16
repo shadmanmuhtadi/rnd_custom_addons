@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<menuitem
+        id="menu_scm_master_root"
+        name="IDC Purchase"
+        sequence="0"/>
+
+    <!-- <menuitem
+        id="menu_scm_master"
+        name="Orders"
+        action="hr.action_hr_job"
+        parent="menu_scm_master_root"
+        sequence="1"/> -->
+
+    <!-- <menuitem
+        id="menu_scm_product"
+        name="Products"
+        action="hr.hr_department_kanban_action"
+        parent="menu_scm_master_root"
+        groups=""
+        sequence="3"/> -->
+
+
+    <!-- <menuitem 
+        id="menu_hr_user_inherit"
+        name="Users"
+        action="base.action_res_users"
+        parent="hr.menu_hr_employee_payroll"
+        groups=""
+        sequence="6"/> -->
+
+</odoo>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--Bi Report Form View -->
+    <record id="view_bi_report_form" model="ir.ui.view">
+        <field name="name">bi.report.form</field>
+        <field name="model">bi.report</field>
+        <field name="arch" type="xml">
+            <form>
+            <!-- IDC Year By Year Sales Analysis Report For All Brand -->
+            <sheet groups="IDC_BI_Management.group_bi_md">
+                <form string="Embedded Webpage" version="7.0" edit="false" create="false"> 
+                    <div>         
+                        <iframe title="IDC Year By Year Sales Analysis Report For All Brand" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiM2JhZWE4OTItNjAxNy00MzA3LWFkNjEtMGNlNTZmYmVkZjRkIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+                    </div>
+                </form>
+            </sheet>
+        </form>
+        </field>
+    </record>
+
+<!--Bi District Form View -->
+<record id="view_bi_district_form" model="ir.ui.view">
+    <field name="name">bi.district.form</field>
+    <field name="model">bi.district</field>
+    <field name="arch" type="xml">
+        <form>
+            <!-- ATTRACTIVENESS SCORE REPORT -->
+            <sheet groups="IDC_BI_Management.group_bi_md,IDC_BI_Management.group_bi_sd,IDC_BI_Management.group_bi_gm">
+                <form string="ATTRACTIVENESS SCORE REPORT" version="7.0" edit="false" create="false"> 
+                    <div>         
+                        <iframe title="ATTRACTIVENESS SCORE REPORT" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiNmM5NTJhYmEtZWYyOS00Y2NjLTlhOTUtNjE4ZjMyN2ZjMGU0IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+                    </div>
+                </form>
+                </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Kmd Form View -->
+<record id="view_bi_kmd_form" model="ir.ui.view">
+    <field name="name">bi.kmd.form</field>
+    <field name="model">bi.kmd</field>
+    <field name="arch" type="xml">
+        <form>
+            <!-- KMD - Sales Dashboard -->
+            <sheet groups="IDC_BI_Management.group_bi_sd">
+                <form string="KMD - Sales Dashboard" version="7.0" edit="false" create="false"> 
+                    <iframe title="KMD - Sales Dashboard" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiNjRlODMyMjAtMjZhMC00N2Y5LWFkYzYtNmFjMmI1ZTcyNzgxIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+                </form>
+                </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Fdn Form View -->
+<record id="view_bi_fdn_form" model="ir.ui.view">
+    <field name="name">bi.fdn.form</field>
+    <field name="model">bi.fdn</field>
+    <field name="arch" type="xml">
+        <form>
+            <!-- FDN Sales Dashboard -->
+            <sheet groups="IDC_BI_Management.group_bi_gm,IDC_BI_Management.group_bi_fdn">
+                <form string="FDN" version="7.0" edit="false" create="false"> 
+                    <iframe title="FDN" width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiYzE4MDcwM2YtZDQxOC00ZGI3LTkyM2QtNWVjZGNiZWMyOWFhIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+                </form>
+                </sheet>
+        </form>
+    </field>
+</record>
+
+
+<!--Bi Report Action -->
+    <record id="action_bi_report" model="ir.actions.act_window">
+        <field name="name">Bi Report</field>
+        <field name="res_model">bi.report</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi District Action -->
+    <record id="action_bi_district" model="ir.actions.act_window">
+        <field name="name">Bi District</field>
+        <field name="res_model">bi.district</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi Kmd Action -->
+<record id="action_bi_kmd" model="ir.actions.act_window">
+    <field name="name">Bi KMD</field>
+    <field name="res_model">bi.kmd</field>
+    <field name="view_mode">form</field>
+    <field name="help" type="html">
+        <p class = "o_view_nocontent_smiling_face">
+                Upload your file!
+        </p>
+    </field>
+</record>
+
+<!--Bi Fdn Action -->
+<record id="action_bi_fdn" model="ir.actions.act_window">
+    <field name="name">Bi FDN</field>
+    <field name="res_model">bi.fdn</field>
+    <field name="view_mode">form</field>
+    <field name="help" type="html">
+        <p class = "o_view_nocontent_smiling_face">
+                Upload your file!
+        </p>
+    </field>
+</record>
+
+
+    <menuitem
+        id="bi"
+        name="BI Reports - IDC"
+        sequence = "40"/>
+
+    <menuitem
+        id="bi_all"
+        name="IDC Total Sales"
+        parent="bi"
+        action="action_bi_report" 
+        sequence = "20"/>
+    
+    <menuitem
+        id="bi_district"
+        name="District Rank"
+        parent="bi"
+        action="action_bi_district" 
+        sequence = "10"/>
+
+    <menuitem
+        id="bi_kmd"
+        name="KMD Sales"
+        parent="bi"
+        action="action_bi_kmd" 
+        sequence = "30"/>
+
+    <menuitem
+        id="bi_fdn"
+        name="FDN Sales"
+        parent="bi"
+        action="action_bi_fdn" 
+        sequence = "40"/>
+
+</odoo>

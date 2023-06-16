@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--tree view for the menu item-->
+    <record id="view_scm_lc_tree" model="ir.ui.view">
+        <field name="name">scm.lc.tree</field>
+        <field name="model">scm.lc</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="lc_no"/>
+                <field name="lc_date"/>
+                <!-- <field name="incoterms"/> -->
+                <!-- <field name="supplier_name_id"/> -->
+                <field name="shipment_date"/>
+                <field name="arrival_date"/>
+                <field name="branch_lc_sl_no"/>
+                <field name="partner_id"/>
+                <field name="order_lc_ids" widget="many2many_tags"/>
+                <field name="subtotal"/>
+                <field name='state'
+                    decoration-success="state == 'done'"
+                    decoration-info="state == 'draft'"
+                    decoration-danger="state == 'cancel'"
+                    decoration-warning="state == 'in_progress'"
+                    widget="badge"/>
+            </tree>
+        </field>
+    </record>
+
+
+<!--form view for the menu item-->
+    <record id="view_scm_lc_form" model="ir.ui.view">
+        <field name="name">scm.lc.form</field>
+        <field name="model">scm.lc</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_in_progress" string="In Progress" class="oe_highlight" type="object" states="draft"/>
+                    <button name="action_done" string="Mark As Done" type="object" class="oe_highlight" states="in_progress"/>
+                    <button name="action_cancel" string="Cancel" type="object" states="draft,done"/>
+                    <button name="action_draft" string="Reset To Draft" class="oe_highlight" type="object" states="cancel"/>
+                    <field name="state" widget="statusbar" nolabel="1" statusbar_visible="draft,in_progress,done,cancel"/>
+                    <!-- statusbar_visible: only these state would be visible. cancelled state wont be visible unless it has a record assigend.
+                        options: weather the state would be clickable or not. -->
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="lc_date"/>
+                            <field name="lc_no"/>
+                            <!-- <field name="incoterms"/> -->
+                        </group>
+                        <group>
+                            <!-- <field name="supplier_name_id"/> -->
+                            <field name="shipment_date"/>
+                            <field name="arrival_date"/>
+                            <field name="branch_lc_sl_no"/>
+                            <field name="partner_id"/>
+                            <field name="attachments" widget="many2many_binary"/>
+                        </group>                                                           
+                    </group>
+
+                    <notebook>
+                        <page string='Order Line' name='orderline'>
+                            <field name="order_lc_ids">
+                                <tree editable="bottom">
+                                    <field name="order_id"/>
+                                    <field name="principle"/>
+                                    <field name="amount_total"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="order_id"/>
+                                        <field name="principle"/>
+                                        <field name="amount_total"/>
+                                    </group>
+                                </form>
+                            </field>
+                            <group>
+                                <group>
+                                    <field name="notes" nolabel="1" placeholder="Define your terms and conditions ..."/>
+                                </group>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <!-- <field name="subtotal" widget="account-tax-totals-field" nolabel="1" colspan="2"/> -->
+                                    <field name="subtotal" colspan="2"/>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <!-- Chatter -->
+                <!-- <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div> -->
+            </form>
+        </field>
+    </record>
+
+
+<!--action for the child menu item-->
+    <record id="action_scm_lc" model="ir.actions.act_window">
+        <field name="name">Create LC</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scm.lc</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first LC!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem
+        id="scm_lc"
+        name="LC"
+        action="action_scm_lc"
+        parent="purchase.menu_purchase_root"
+        sequence="5"/>
+
+</odoo>

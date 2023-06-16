@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!-- ECOM Target Tree View -->
+    <record id="view_ecom_target_tree" model="ir.ui.view">
+        <field name="name">ecom.target.tree</field>
+        <field name="model">ecom.target</field>
+        <field name="arch" type="xml">
+            <tree string="File">
+                <field name="date"/>
+                <field name="level1"/>
+                <field name="level1name"/>
+                <field name="custtypename"/>
+                <field name="customercode"/>
+                <field name="customername"/>
+                <field name="subbusiness"/>
+                <field name="category"/>
+                <field name="productcode"/>
+                <field name="productname"/>
+                <field name="tp"/>
+                <field name="qty"/>
+                <field name="value"/>
+                <field name="brand"/>
+                <field name="keyaccount"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- ECOM Target Form View -->
+    <record id="view_ecom_target_form" model="ir.ui.view">
+        <field name="name">ecom.target.form</field>
+        <field name="model">ecom.target</field>
+        <field name="arch" type="xml">
+            <form string="File">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="level1"/>
+                            <field name="level1name"/>
+                            <field name="custtypename"/>
+                            <field name="customercode"/>
+                            <field name="customername"/>
+                            <field name="subbusiness"/>
+                            <field name="category"/>
+                            <field name="productcode"/>
+                            <field name="productname"/>
+                            <field name="tp"/>
+                            <field name="qty"/>
+                            <field name="value"/>
+                            <field name="brand"/>
+                            <field name="keyaccount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- FDN Targt Tree View-->
+    <record id="view_fdn_target_tree" model="ir.ui.view">
+        <field name="name">fdn.target.tree</field>
+        <field name="model">fdn.target</field>
+        <field name="arch" type="xml">
+            <tree string="File">
+                <field name="date"/>
+                <field name="level1"/>
+                <field name="level1name"/>
+                <field name="custtypename"/>
+                <field name="customercode"/>
+                <field name="customername"/>
+                <field name="subbusiness"/>
+                <field name="category"/>
+                <field name="productcode"/>
+                <field name="productname"/>
+                <field name="tp"/>
+                <field name="qty"/>
+                <field name="value"/>
+                <field name="brand"/>
+                <field name="keyaccount"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- FDN Targt Form View-->
+    <record id="view_fdn_target_form" model="ir.ui.view">
+        <field name="name">fdn.target.form</field>
+        <field name="model">fdn.target</field>
+        <field name="arch" type="xml">
+            <form string="File">
+                <sheet string="File">
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="level1"/>
+                            <field name="level1name"/>
+                            <field name="custtypename"/>
+                            <field name="customercode"/>
+                            <field name="customername"/>
+                            <field name="subbusiness"/>
+                            <field name="category"/>
+                            <field name="productcode"/>
+                            <field name="productname"/>
+                            <field name="tp"/>
+                            <field name="qty"/>
+                            <field name="value"/>
+                            <field name="brand"/>
+                            <field name="keyaccount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- MT Targt Tree View-->
+    <record id="view_mt_target_tree" model="ir.ui.view">
+        <field name="name">mt.target.tree</field>
+        <field name="model">mt.target</field>
+        <field name="arch" type="xml">
+            <tree string="File">
+                <field name="date"/>
+                <field name="level1"/>
+                <field name="level1name"/>
+                <field name="custtypename"/>
+                <field name="customercode"/>
+                <field name="customername"/>
+                <field name="subbusiness"/>
+                <field name="category"/>
+                <field name="productcode"/>
+                <field name="productname"/>
+                <field name="tp"/>
+                <field name="qty"/>
+                <field name="value"/>
+                <field name="brand"/>
+                <field name="keyaccount"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- MT Targt Form View-->
+    <record id="view_mt_target_form" model="ir.ui.view">
+        <field name="name">mt.target.form</field>
+        <field name="model">mt.target</field>
+        <field name="arch" type="xml">
+            <form string="File">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="level1"/>
+                            <field name="level1name"/>
+                            <field name="custtypename"/>
+                            <field name="customercode"/>
+                            <field name="customername"/>
+                            <field name="subbusiness"/>
+                            <field name="category"/>
+                            <field name="productcode"/>
+                            <field name="productname"/>
+                            <field name="tp"/>
+                            <field name="qty"/>
+                            <field name="value"/>
+                            <field name="brand"/>
+                            <field name="keyaccount"/>
+                         </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- All Offtake Tree View -->
+    <record id="view_all_offtake_tree" model="ir.ui.view">
+        <field name="name">all.offtake.tree</field>
+        <field name="model">all.offtake</field>
+        <field name="arch" type="xml">
+            <tree string="File">
+                <field name="date"/>
+                <field name="customercode"/>
+                <field name="custtypename"/>
+                <field name="customername"/>
+                <field name="productcode"/>
+                <field name="productname"/>
+                <field name="subbusiness"/>
+                <field name="category"/>
+                <field name="tp"/>
+                <field name="offtakeqty"/>
+                <field name="offtakevalue"/>
+                <field name="stockqty"/>
+                <field name="stockvalue"/>
+                <field name="brand"/>
+                <field name="keyaccount"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- All Offtake Form View -->
+    <record id="view_all_offtake_form" model="ir.ui.view">
+        <field name="name">all.offtake.form</field>
+        <field name="model">all.offtake</field>
+        <field name="arch" type="xml">
+            <form string="File">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="date"/>
+                            <field name="customercode"/>
+                            <field name="custtypename"/>
+                            <field name="customername"/>
+                            <field name="productcode"/>
+                            <field name="productname"/>
+                            <field name="subbusiness"/>
+                            <field name="category"/>
+                            <field name="tp"/>
+                            <field name="offtakeqty"/>
+                            <field name="offtakevalue"/>
+                            <field name="stockqty"/>
+                            <field name="stockvalue"/>
+                            <field name="brand"/>
+                            <field name="keyaccount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+<!-- ECOM Action -->
+    <record id="action_ecom_target" model="ir.actions.act_window">
+        <field name="name">Ecom Target</field>
+        <field name="res_model">ecom.target</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!-- FDN Action -->
+    <record id="action_fdn_target" model="ir.actions.act_window">
+        <field name="name">FDN Target</field>
+        <field name="res_model">fdn.target</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!-- MT Action -->
+    <record id="action_mt_target" model="ir.actions.act_window">
+        <field name="name">MT Target</field>
+        <field name="res_model">mt.target</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!-- OFFTAKE Action -->
+    <record id="action_all_offtake" model="ir.actions.act_window">
+        <field name="name">Offtake</field>
+        <field name="res_model">all.offtake</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+    <record id="ecom_dashboard_action_url" model="ir.actions.act_url">
+        <field name="name">ECOM BI</field>
+        <field name="url">https://app.powerbi.com/view?r=eyJrIjoiNmNjMzdlYWEtMzY2NS00OWNmLTg2YmMtNGMyOGNiNDNiNjNkIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D</field>
+    </record>
+
+    <record id="mt_collections_dashboard_action_url" model="ir.actions.act_url">
+        <field name="name">MT Collections and Sales BI</field>
+        <field name="url">https://app.powerbi.com/view?r=eyJrIjoiMWIxZDI5NzYtOTEyMC00ODliLWI0OWYtOWY0MjE1MzQ3YmI2IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D</field>
+    </record>
+
+    <record id="mt_dashboard_action_url" model="ir.actions.act_url">
+        <field name="name">MT BI</field>
+        <field name="url">https://app.powerbi.com/view?r=eyJrIjoiZTA2MzkxMWMtYmY2MS00NWM0LTg2ZDItN2QwYmVmZWRiYWY1IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D</field>
+    </record>
+
+    <record id="fdn_dashboard_action_url" model="ir.actions.act_url">
+        <field name="name">FDN BI</field>
+        <field name="url" >https://app.powerbi.com/view?r=eyJrIjoiYzE4MDcwM2YtZDQxOC00ZGI3LTkyM2QtNWVjZGNiZWMyOWFhIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D</field>
+    </record>
+
+    <record id="idc_dashboard_action_url" model="ir.actions.act_url">
+        <field name="name">IDC BI</field>
+        <field name="url">https://app.powerbi.com/view?r=eyJrIjoiM2JhZWE4OTItNjAxNy00MzA3LWFkNjEtMGNlNTZmYmVkZjRkIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D</field>
+    </record>
+    
+
+    <menuitem
+        id="offtake"
+        name="Offtake and Target"/>
+
+
+    <menuitem 
+        id="ecom_target_menu" parent="offtake"
+        name="ECOM Target" action="action_ecom_target" sequence="2"/>
+    <menuitem 
+        id="fdn_target_menu" parent="offtake"
+        name="FDN Target" action="action_fdn_target" sequence="4"/>
+    <menuitem 
+        id="mt_target_menu" parent="offtake"
+        name="MT Target" action="action_mt_target" sequence="6"/>
+    <menuitem 
+        id="all_offtake_menu" parent="offtake"
+        name="OFFTAKE" action="action_all_offtake" sequence="8"/>
+
+    <menuitem 
+        id="bi_dashboard_menu" parent="offtake"
+        name="BI Report" sequence="10"/>
+    
+    <menuitem 
+        id="idc_bi_dashboard_menu" parent="bi_dashboard_menu"
+        name="IDC Report" action="idc_dashboard_action_url" sequence = "-10" groups= "group_offtake_MD"/>
+    
+    <menuitem 
+        id="mt_dashboard_menu" parent="bi_dashboard_menu"
+        name="MT Report" action="mt_dashboard_action_url" sequence = "-9" groups= "group_offtake_mt"/>
+
+    <menuitem 
+        id="mt_collections_dashboard_menu" parent="bi_dashboard_menu"
+        name="MT Collections and Sales Report" action="mt_collections_dashboard_action_url" sequence = "-8" groups= "group_offtake_mt"/>
+
+    <menuitem 
+        id="ecom_dashboard_menu" parent="bi_dashboard_menu"
+        name="ECOM Report" action="ecom_dashboard_action_url" sequence = "-7" groups= "group_offtake_ecom"/>
+    
+    <menuitem 
+        id="fdn_dashboard_menu" parent="bi_dashboard_menu"
+        name="FDN Report" action="fdn_dashboard_action_url" sequence = "-6" groups= "group_offtake_fdn"/>
+    
+
+</odoo>

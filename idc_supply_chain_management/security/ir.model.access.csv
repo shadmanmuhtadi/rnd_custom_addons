@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.scm.order_lc,access_scm_order_lc,idc_supply_chain_management.model_scm_order_lc,base.group_user,1,1,1,1
+access.scm.lc,access_scm_lc,idc_supply_chain_management.model_scm_lc,base.group_user,1,1,1,1
+access.scm.hscode,access_scm_hscode,model_scm_hscode,base.group_system,1,1,1,1

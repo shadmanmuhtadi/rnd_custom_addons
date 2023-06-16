@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<menuitem
+        id="menu_hr_master_data_inherit"
+        name="Master Data"
+        parent="hr.menu_hr_root"
+        sequence="6"/>
+        <!-- groups="hr.group_hr_manager" -->
+
+
+    <menuitem
+        id="menu_hr_job_role_inherit"
+        name="Job Roles"
+        action="hr.action_hr_job"
+        parent="menu_hr_master_data_inherit"
+        sequence="1"/>
+        <!-- groups="hr.group_hr_manager" -->
+
+
+    <menuitem
+        id="menu_hr_department_inherit"
+        name="Departments"
+        action="hr.hr_department_kanban_action"
+        parent="menu_hr_master_data_inherit"
+        sequence="3"/>
+        <!-- groups="hr.group_hr_manager" -->
+
+
+
+    <menuitem 
+        id="menu_hr_user_inherit"
+        name="Users"
+        action="base.action_res_users"
+        parent="hr.menu_hr_employee_payroll"
+        sequence="6"/>
+        <!-- groups="hr.group_hr_manager" -->
+
+
+</odoo>

@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.ecom.target,access_ecom_target,IDC_Offtake_Management.model_ecom_target,IDC_Offtake_Management.group_offtake_ecom,1,1,1,1
+access.fdn.target,access_fdn_target,IDC_Offtake_Management.model_fdn_target,IDC_Offtake_Management.group_offtake_fdn,1,1,1,1
+access.mt.target,access_mt_target,IDC_Offtake_Management.model_mt_target,IDC_Offtake_Management.group_offtake_mt,1,1,1,1
+access.all.offtake,access_all_offtake,IDC_Offtake_Management.model_all_offtake,IDC_Offtake_Management.group_offtake_all,1,1,1,1
+
+
+

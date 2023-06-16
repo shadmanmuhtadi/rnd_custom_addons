@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="idc_hr_contract_view_form11111" model="ir.ui.view">
+        <field name="name">idc.hr.contract.form.inherit1111</field> <!--name of the view-->
+        <field name="model">hr.employee</field> <!--model we have inherited-->
+        <field name="inherit_id" ref="hr_idc.view_personal_form_inherit"/> <!--view we have inherited--> 
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='recruitment_type']" position="after">
+                <!-- <field name="contract_type" string='Employment Type'/> -->
+                <field name="job_title" string='Employment Type'/>
+
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
