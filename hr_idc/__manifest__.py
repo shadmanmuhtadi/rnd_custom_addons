@@ -24,8 +24,8 @@
         'oh_employee_documents_expiry',
         # 'hr_payroll_community',
         'hr_org_chart_overview',
-        'IDC_BI_Management',
-        'IDC_Offtake_Management'
+        'idc_bi',
+        'idc_offtake'
     ],
     'data': [
         'security/security.xml',
