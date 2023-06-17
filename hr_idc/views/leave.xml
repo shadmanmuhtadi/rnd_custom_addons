@@ -10,8 +10,6 @@
             </xpath>
         </field>
     </record>
-
-
     <record id="hr_holidays_view_tree_inherit_idc" model="ir.ui.view">
         <field name="name">hr.leave.view.tree_inherit_idc</field>
         <field name="model">hr.leave</field>
