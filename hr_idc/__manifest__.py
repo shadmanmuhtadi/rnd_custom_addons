@@ -2,6 +2,7 @@
 
 {
     'name': 'IDCHRMS',
+    'icon': '/hr_idc/static/description/icon.png',
     'version': '1.1',
     'category': 'Human Resources/Employees',
     'sequence': -99,
@@ -9,6 +10,9 @@
     'description': "",
     'website': '',
     'images': [
+        'static/img/ep.jpg',
+        'static/img/board_ep.jpg',
+        'static/img/platinum_ep.jpg',
     ],
     'depends': [
         'base',

@@ -5,30 +5,35 @@
             <field name="name">Silver EP Level-3</field>
             <field name="capacity">4</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/ep.jpg"/>
         </record>
 
         <record id="meetingroom_Goldl3" model="meeting.room">
             <field name="name">Gold EP Level-3</field>
             <field name="capacity">4</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/ep.jpg"/>
         </record>
 
         <record id="meetingroom_Platinuml3" model="meeting.room">
             <field name="name">Platinum EP Level-3</field>
             <field name="capacity">8</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/platinum_ep.jpg"/>
         </record>
 
         <record id="meetingroom_Sapphirel4" model="meeting.room">
             <field name="name">Sapphire EP Level-4</field>
             <field name="capacity">4</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/ep.jpg"/>
         </record>
 
         <record id="meetingroom_Rubyl4" model="meeting.room">
             <field name="name">Ruby EP Level-4</field>
             <field name="capacity">4</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/ep.jpg"/>
         </record>
 
         <record id="meetingroom_Durnibar" model="meeting.room">
@@ -65,6 +70,7 @@
             <field name="name">Board Room EP</field>
             <field name="capacity">14</field>
             <field name="description"></field>
+            <field name="image" type="base64" file="hr_idc/static/img/board_ep.jpg"/>
         </record>
 
     </data>
