@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="hr_leave_view_form_inherit_idc" model="ir.ui.view">
+        <field name="name">hr.leave.view.form_inherit_idc</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                <attribute name="string">Leave Type</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="hr_holidays_view_tree_inherit_idc" model="ir.ui.view">
+        <field name="name">hr.leave.view.tree_inherit_idc</field>
+        <field name="model">hr.leave</field>
+        <field name="inherit_id" ref="hr_holidays.hr_leave_view_tree_my"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='holiday_status_id']" position="attributes">
+                <attribute name="string">Leave Type</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_holiday_status_form_inherit_idc" model="ir.ui.view">
+        <field name="name">hr_holiday_status_form_inherit_idc</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='request_unit']" position="attributes">
+                <attribute name="string">Take Leave in</attribute>
+            </xpath>
+            <xpath expr="//field[@name='responsible_id']" position="attributes">
+                <attribute name="string">Responsible Leave Officer</attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Renaming Menu -->
+    <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_root">
+        <field name="name">Leave</field>
+    </record>
+    <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_my_leaves">
+        <field name="name">My Leave</field>
+    </record>
+    <record model="ir.ui.menu" id="hr_holidays.menu_open_department_leave_approve">
+        <field name="name">Leave</field>
+    </record>
+    <record model="ir.ui.menu" id="hr_holidays.hr_holidays_status_menu_configuration">
+        <field name="name">Leave Types</field>
+    </record>
+        <record model="ir.ui.menu" id="hr_holidays.hr_leave_menu_my">
+        <field name="name">My Leave</field>
+    </record>
+    <!-- Renaming Actions -->
+    <record id="hr_holidays.hr_leave_action_my" model="ir.actions.act_window">
+        <field name="name">My Leave</field>
+    </record>
+    <record id="hr_holidays.hr_leave_action_action_approve_department" model="ir.actions.act_window">
+        <field name="name">All Leave</field>
+    </record>
+        <record id="hr_holidays.open_view_holiday_status" model="ir.actions.act_window">
+        <field name="name">Leave Types</field>
+    </record>
+</odoo>
