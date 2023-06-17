@@ -19,6 +19,7 @@
         'web',
         'hr',
         'hr_attendance',
+        'hr_holidays',
         'hr_contract',
         'hr_employee_updation',
         'oh_employee_documents_expiry',
@@ -37,7 +38,8 @@
         'views/idc_hr_contract.xml',
         'views/contact_inherit.xml',
         'views/designations.xml',
-        'views/calendar_view.xml'
+        'views/calendar_view.xml',
+        'views/leave.xml'
     ],
     'demo': [
     ],
