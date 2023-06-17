@@ -1,7 +1,7 @@
 
 
 {
-    'name': 'IDC HR',
+    'name': 'IDCHRMS',
     'version': '1.1',
     'category': 'Human Resources/Employees',
     'sequence': -99,
