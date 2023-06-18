@@ -101,4 +101,3 @@ access_hr_hr_department_employee,access_hr_hr_department_employee,hr.model_hr_de
 access_hr_hr_department_manager,access_hr_hr_department_manager,hr.model_hr_department,hr_idc.group_hr_manager,1,0,0,0
 access_hr_hr_department_hradmin,access_hr_hr_department_hradmin,hr.model_hr_department,hr_idc.group_hr_hradmin,1,1,1,1
 access_hr_hr_department_itadmin,access_hr_hr_department_itadmin,hr.model_hr_department,hr_idc.group_hr_itadmin,1,1,1,1
-

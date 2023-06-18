@@ -88,6 +88,12 @@
         <field name="perm_unlink" eval="1"/>
         <field name="groups" eval="[(4, ref('group_hr_itadmin'))]"/>
     </record>
+    <function name="write" model="ir.model.data"> 
+        <function name="search" model="ir.model.data"> 
+            <value eval="[('module','=','hr_holidays'), ('name','=','hr_leave_rule_user_read')] "/> 
+        </function> 
+        <value eval ="{'noupdate':True}"/> 
+    </function>
 
     <record id="hr_holidays.hr_leave_rule_user_read" model="ir.rule">
         <field name="name">Time Off My team Approver read</field>

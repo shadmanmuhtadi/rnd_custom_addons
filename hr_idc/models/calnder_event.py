@@ -28,7 +28,7 @@ class PersonalInfo(models.Model):
     _inherit = "calendar.event"
 
 
-    room_id = fields.Many2one('meeting.room',string='Meeting Room',help="Location of Event",ondelete='cascade',required=True)
+    room_id = fields.Many2one('meeting.room',string='Meeting Room',help="Location of Event",ondelete='cascade')
     location = fields.Char('Location',compute='get_location', tracking=True, help="Location of Event")
     calendar_event_type = fields.Char(string='Event Type')
 
@@ -60,7 +60,7 @@ class PersonalInfo(models.Model):
         if self.room_id:
             self.calendar_event_type = 'event_type_meeting'
         else:
-            self.calendar_event_type = False
+            self.calendar_event_type = 'event_type_others'
 
 class MeetingRoom(models.Model):
     _name = 'meeting.room'
