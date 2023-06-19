@@ -58,8 +58,6 @@
         <field name="groups_id" eval="[(4, ref('hr_idc.group_hr_manager')), (4, ref('hr_idc.group_hr_itadmin')), (4, ref('hr_idc.group_hr_hradmin'))]"/>
     </record>
 
-    
-
 
     <!-- Renaming Menu -->
     <record model="ir.ui.menu" id="hr_holidays.menu_hr_holidays_root">

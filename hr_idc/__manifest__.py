@@ -18,6 +18,7 @@
         'base',
         'base_setup',
         'mail',
+        'mail_debrand',
         'resource',
         'calendar',
         'web',
