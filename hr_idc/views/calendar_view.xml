@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+    <record model="ir.ui.menu" id="calendar.calendar_submenu_reminders">
+        <field name="groups_id" eval="[(4, ref('hr_idc.group_hr_manager')), (4, ref('hr_idc.group_hr_itadmin')), (4, ref('hr_idc.group_hr_hradmin'))]"/>
+    </record>
+
     <!--meeting event creation form view-->
     <record id="idc_hr_calendar_event_form_inherit" model="ir.ui.view">
         <field name="name">idc.hr.calendar.event.form.inherit</field> 
@@ -68,6 +72,8 @@
         </field>
     </record>
 
+    
+
     <!--tree view for the menu item-->
     <record id="view_meeting_room_tree" model="ir.ui.view">
         <field name="name">meeting.room.tree</field>
@@ -118,6 +124,7 @@
             </p>
         </field>
     </record>
+
 
     <menuitem
         id="menu_hr_meeting_room"

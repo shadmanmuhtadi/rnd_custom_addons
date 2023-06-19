@@ -54,6 +54,10 @@
         </field>
     </record>
 
+    <record model="ir.ui.menu" id="hr_holidays.hr_holidays_menu_manager_approve_allocations">
+        <field name="groups_id" eval="[(4, ref('hr_idc.group_hr_manager')), (4, ref('hr_idc.group_hr_itadmin')), (4, ref('hr_idc.group_hr_hradmin'))]"/>
+    </record>
+
     
 
 
@@ -83,4 +87,11 @@
         <record id="hr_holidays.open_view_holiday_status" model="ir.actions.act_window">
         <field name="name">Leave Types</field>
     </record>
+
+    <!-- <record id="" model="">
+        <field name="name">Allocations</field>
+        <field name="groups" eval="[(4, ref('hr_idc.group_hr_manager')), (4, ref('hr_idc.group_hr_hradmin')), (4, ref('hr_idc.group_hr_itadmin'))]"/>
+    </record> -->
+
 </odoo>
+
