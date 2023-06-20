@@ -27,32 +27,16 @@ class hscode(models.Model):
                     +(1+(1*(record.insurance)))*(record.landing)
                     )*100
 
-    
+#Computation of TTI Value    
     @api.depends('assvalue', 'cd', 'rd', 'sd', 'vat', 'ait', 'at')
     def _compute_total_tti(self):
         for record in self:
             # Perform the calculation logic here
-            total_tti = (
+            record.total_tti = (
                 (record.assvalue * record.cd ) +
                 (record.assvalue * record.rd ) +
-                ((record.assvalue + (record.assvalue * record.cd ) + (record.assvalue * record.rd )) * record.sd ) +
-                (
-                    (record.assvalue + (record.assvalue * record.cd ) + (record.assvalue * record.rd ) +
-                    (record.assvalue + (record.assvalue * record.cd ) + (record.assvalue * record.rd )) * record.sd ) * record.vat 
-                ) +
-                (record.assvalue * record.ait ) +
-                (
-                    record.assvalue + (
-                        (record.assvalue * record.cd ) + (record.assvalue * record.rd ) +
-                        (record.assvalue + (record.assvalue * record.cd ) + (record.assvalue * record.rd )) * record.sd 
-                    )
-                ) * (
-                    record.assvalue + (
-                        (record.assvalue * record.cd ) + (record.assvalue * record.rd ) +
-                        (record.assvalue + (record.assvalue * record.cd ) + (record.assvalue * record.rd )) * record.sd 
-                    )
-                ) * record.at 
-            ) / 100
-
-
-            record.total_tti = total_tti
+                ((record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd)) * record.sd) +
+                ((record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd) + (record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd)) * record.sd) * record.vat) +
+                (record.assvalue + record.ait) +
+                ((record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd) + (record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd)) * record.sd) * record.at)
+            )
