@@ -111,3 +111,9 @@ access_hr_hr_leave_employee,access_hr_hr_leave_employee,hr_holidays.model_hr_lea
 access_hr_hr_leave_manager,access_hr_hr_leave_manager,hr_holidays.model_hr_leave,hr_idc.group_hr_manager,1,1,1,1
 access_hr_hr_leave_hradmin,access_hr_hr_leave_hradmin,hr_holidays.model_hr_leave,hr_idc.group_hr_hradmin,1,1,1,1
 access_hr_hr_leave_itadmin,access_hr_hr_leave_itadmin,hr_holidays.model_hr_leave,hr_idc.group_hr_itadmin,1,1,1,1
+
+access_hr_res_users_hradmin,access_hr_res_users_hradmin,base.model_res_users,hr_idc.group_hr_hradmin,1,1,1,1
+
+access_hr_change_password_wizard_hradmin,access_hr_change_password_wizard_hradmin,base.model_change_password_wizard,hr_idc.group_hr_hradmin,1,1,1,1
+
+access_hr_change_password_user_hradmin,access_hr_change_password_user_hradmin,base.model_change_password_user,hr_idc.group_hr_hradmin,1,1,1,1
