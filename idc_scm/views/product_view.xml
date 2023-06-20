@@ -24,33 +24,45 @@
                 <field name="country_id"/>
             </xpath>
             <xpath expr="//field[@name='uom_po_id']" position="after">
-                <field name="approved_by"/>
+                <field name="bsti_bcsir"/>
                 <field name="incoterm"/>
             </xpath>
             <xpath expr="//field[@name='barcode']" position="after">
                 <field name="tti"/>
-                <field name="hs_code_id"/>
             </xpath>
-            <!-- <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_qty']" position="attributes">
-                <attribute name="string">MOQ</attribute>
-
+            <!-- <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="string">Pre Costing</attribute>
             </xpath> -->
         </field>
+        
     </record>
-    <!-- <record id="view_product_template_purchase_form_inherit" model="ir.ui.view">
-        <field name="name">view.product.template.purchase.form.inherit</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="purchase.view_product_supplier_inherit"/>
-        <field name="arch" type="xml">
-            <xpath expr="//page/field[@name='purchase']/tree/field[@name='min_qty']" position="attributes">
-                <attribute name="string">MOQ</attribute>
 
+    <!-- <record id="view_product_template_form_view_inherit" model="ir.ui.view">
+        <field name="name">view_product_template_form_view_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="string">Pre Costing</attribute>
             </xpath>
         </field>
     </record> -->
 
-<!-- view_product_supplier_inherit -->
-<!-- product_supplierinfo_tree_view2 -->
+    <!-- view_product_purchase_quantity_inherit -->
+    <record id="view_product_supplier_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.tree.view3</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Principle</attribute>
+            </xpath>
+            <xpath expr="//field[@name='min_qty']" position="attributes">
+                <attribute name="string">MOQ</attribute>
+            </xpath>
+        </field>
+    </record>
+
 
     <!-- Tree view inherit -->
     <record id="view_product_template_tree_inherit" model="ir.ui.view">
