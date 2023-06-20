@@ -9,7 +9,7 @@ class ProductTemplate(models.Model):
     brand = fields.Many2one('product.category', string='Brand',help='For example: Tang, cadbury')
     category = fields.Many2one('product.category', string='Category',help='For example: Silk')
     master_code = fields.Char(string='Master Code',help='Might be provided by Principles')
-    approved_by = fields.Selection([('bsti', 'BSTI'), ('bcsir','BCSIR')], string="Approved By")
+    bsti_bcsir = fields.Selection([('yes', 'YES'), ('no','NO')], string="BSTI/BCSIR", default='yes')
     country_id = fields.Many2one('res.country', string='Country of Origin',
         help="Apply only if delivery country matches.")
     product_code = fields.Char(string='Product Code')
@@ -18,5 +18,5 @@ class ProductTemplate(models.Model):
         'account.incoterms', 'Incoterm',
         help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
 
-    hs_code_id = fields.Many2one('scm.hscode',string='HS Code')
+    hs_code = fields.Many2one('scm.hscode')
     
