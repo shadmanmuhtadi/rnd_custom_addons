@@ -1,7 +1,7 @@
 
 
 {
-    'name': 'IDCHRMS',
+    'name': 'IDC HRMS',
     'icon': '/hr_idc/static/description/icon.png',
     'version': '1.1',
     'category': 'Human Resources/Employees',
@@ -19,6 +19,7 @@
         'base_setup',
         'mail',
         'mail_debrand',
+        'idc_global_custom',
         'resource',
         'calendar',
         'web',
