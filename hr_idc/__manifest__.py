@@ -45,8 +45,13 @@
         'views/contact_inherit.xml',
         'views/designations.xml',
         'views/calendar_view.xml',
-        'views/leave.xml'
+        'views/leave.xml',
     ],
+    'assets': {
+        'web.assets_backend': [
+            'hr_idc/static/src/js/base_view.js',
+            ],
+        },
     'demo': [
     ],
     'installable': True,
