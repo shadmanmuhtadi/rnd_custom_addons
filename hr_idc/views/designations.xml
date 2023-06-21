@@ -48,6 +48,6 @@
         name="Designations"
         action="action_idc_hr_designation"
         parent="menu_hr_master_data_inherit"
-        groups="hr.group_hr_manager"
+        groups="hr_idc.group_hr_hradmin"
         sequence="2"/>
 </odoo>
