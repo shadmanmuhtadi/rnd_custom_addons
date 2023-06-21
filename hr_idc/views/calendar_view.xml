@@ -158,7 +158,7 @@
 
     <record model="ir.actions.act_url" id="action_calendar_user_manual">
         <field name="name">open user manual</field>
-        <field name="url">https://www.youtube.com/watch?v=_axgQk_2ZQE&amp;ab_channel=Marko</field>
+        <field name="url">https://youtu.be/XvtKevQmcWc</field>
         <field name="target">new</field>
     </record>
 
