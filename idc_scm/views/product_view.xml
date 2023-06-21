@@ -37,10 +37,10 @@
         
     </record>
 
-    <!-- <record id="view_product_template_form_view_inherit" model="ir.ui.view">
-        <field name="name">view_product_template_form_view_inherit</field>
-        <field name="model">product.template</field>
-        <field name="inherit_id" ref="product.product_template_form_view"/>
+    <!-- <record id="view_product_cost_inherit" model="ir.ui.view">
+        <field name="name">product.product.expense.form10</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='standard_price']" position="attributes">
                 <attribute name="string">Pre Costing</attribute>
@@ -59,6 +59,18 @@
             </xpath>
             <xpath expr="//field[@name='min_qty']" position="attributes">
                 <attribute name="string">MOQ</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- view_hscode_inherit -->
+    <record id="view_product_hscode_inherit" model="ir.ui.view">
+        <field name="name">product.hscode.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="delivery.product_template_hs_code"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='hs_code']" position="replace">
+                <field name="hs_code_id"/>
             </xpath>
         </field>
     </record>

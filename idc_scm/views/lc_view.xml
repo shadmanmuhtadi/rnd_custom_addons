@@ -56,7 +56,7 @@
                             <field name="arrival_date"/>
                             <field name="branch_lc_sl_no"/>
                             <field name="partner_id"/>
-                            <field name="attachments" widget="many2many_binary"/>
+                            <!-- <field name="attachments" widget="many2many_binary"/> -->
                         </group>                                                           
                     </group>
 

@@ -18,5 +18,5 @@ class ProductTemplate(models.Model):
         'account.incoterms', 'Incoterm',
         help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
 
-    hs_code = fields.Many2one('scm.hscode')
+    hs_code_id = fields.Many2one('scm.hscode', string='HS Code')
     

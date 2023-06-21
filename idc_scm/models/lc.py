@@ -3,7 +3,9 @@ from odoo import api, fields, models
 class lc(models.Model):
 
     _name = "scm.lc"
-    _inherit = ['mail.thread','ir.attachment']
+    # _inherit = ['mail.thread','ir.attachment']
+    _inherit = ['mail.thread']
+
     _description = "LC"
     _rec_name = 'lc_no'
    
@@ -20,9 +22,9 @@ class lc(models.Model):
         ('draft', 'Draft'),
         ('in_progress', 'In Progress'),
         ('done', 'Done'),
-        ('cancel', 'Cancel')], string='Status', default='draft', required=True)
+        ('cancel', 'Cancel')], string='Status', default='draft')
 
-    attachments = fields.Many2many('ir.attachment', string="Attachments",required=True)
+    # attachments = fields.Many2many('ir.attachment', string="Attachments")
     
     order_lc_ids = fields.One2many('scm.order.lc','lc_id', string= "Purchase LC")
     #---------------------------------------------------------------------
@@ -70,7 +72,7 @@ class order_lc(models.Model):
 
     order_id = fields.Many2one('purchase.order', domain="[('state', '=', 'purchase')]" ,string="Order Id")
     # amount_total = fields.Monetary(string='Order Value', related='order_id.amount_total')
-    currency_id = fields.Many2one("res.currency", string="Valuta", required=True)
+    currency_id = fields.Many2one("res.currency", string="Valuta")
     amount_total = fields.Monetary(currency_field="currency_id",string='Total',related='order_id.amount_total')
     principle = fields.Many2one(string='Principles',related='order_id.partner_id')
     # selected_order_id = fields.Many2one('scm.purchase', string='Selected Product')

@@ -10,9 +10,9 @@ class hscode(models.Model):
     insurance = fields.Float(string='Insurance')
     landing = fields.Float(string='Landing')
     assvalue = fields.Float(string='Assesment Value', compute ='_compute_assvalue')
-    cd = fields.Float(string='Continuous Delivery')
+    cd = fields.Float(string='CD')
     rd = fields.Float(string='RD')
-    sd = fields.Float(string='Store Door')
+    sd = fields.Float(string='SD')
     vat = fields.Float(string='VAT')
     ait = fields.Float(string='AIT')
     at = fields.Float(string='AT')
@@ -39,4 +39,5 @@ class hscode(models.Model):
                 ((record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd) + (record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd)) * record.sd) * record.vat) +
                 (record.assvalue + record.ait) +
                 ((record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd) + (record.assvalue + (record.assvalue * record.cd) + (record.assvalue * record.rd)) * record.sd) * record.at)
+            
             )

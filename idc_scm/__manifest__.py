@@ -5,7 +5,7 @@
     'category': 'ERP',
     'sequence': 6,
     'summary': 'Manages the Supply Chain Process',
-    'depends': ['stock','sale','purchase','mail','base'],
+    'depends': ['stock','sale','purchase','mail','base','delivery'],
     'images': [],
     'website': "",
     'description': """,
