@@ -156,6 +156,17 @@
         </field>
     </record>
 
+    <record model="ir.actions.act_url" id="action_calendar_user_manual">
+        <field name="name">open user manual</field>
+        <field name="url">https://www.youtube.com/watch?v=_axgQk_2ZQE&amp;ab_channel=Marko</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem
+        id="menu_calendar_user_manual" 
+        name="User Guide"
+        parent="calendar.mail_menu_calendar" 
+        action="action_calendar_user_manual"/>
 
     <menuitem
         id="menu_hr_meeting_room"
