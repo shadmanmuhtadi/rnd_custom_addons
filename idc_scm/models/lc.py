@@ -26,7 +26,7 @@ class lc(models.Model):
 
     # attachments = fields.Many2many('ir.attachment', string="Attachments")
     
-    order_lc_ids = fields.One2many('scm.order.lc','lc_id', string= "Purchase LC")
+    order_lc_ids = fields.One2many('scm.order.lc','lc_id', string= "PI No")
     #---------------------------------------------------------------------
 
     @api.depends('order_lc_ids.amount_total')

@@ -24,29 +24,28 @@
                 <field name="country_id"/>
             </xpath>
             <xpath expr="//field[@name='uom_po_id']" position="after">
-                <field name="bsti_bcsir"/>
+                <field name="regulatory_issue"/>
+                <field name="bsti_no" attrs="{'invisible':[('regulatory_issue','=', 'bcsir')]}"/>
                 <field name="incoterm"/>
             </xpath>
             <xpath expr="//field[@name='barcode']" position="after">
                 <field name="tti"/>
             </xpath>
-            <!-- <xpath expr="//field[@name='standard_price']" position="attributes">
-                <attribute name="string">Pre Costing</attribute>
-            </xpath> -->
         </field>
         
     </record>
 
-    <!-- <record id="view_product_cost_inherit" model="ir.ui.view">
-        <field name="name">product.product.expense.form10</field>
-        <field name="model">product.product</field>
-        <field name="inherit_id" ref="product.product_variant_easy_edit_view"/>
+    <!-- view_product_cost_inherit -->
+    <record id="view_product_cost_inherit" model="ir.ui.view">
+        <field name="name">product.cost.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='standard_price']" position="attributes">
+            <xpath expr="//label[@for='standard_price']" position="attributes">
                 <attribute name="string">Pre Costing</attribute>
             </xpath>
         </field>
-    </record> -->
+    </record>
 
     <!-- view_product_purchase_quantity_inherit -->
     <record id="view_product_supplier_inherit" model="ir.ui.view">
