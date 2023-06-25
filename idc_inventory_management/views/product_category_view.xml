@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--Form View -->
+<record id="view_recommendation_types_form" model="ir.ui.view">
+    <field name="name">recommendation.types.form</field>
+    <field name="model">recommendation.types</field>
+    <field name="arch" type="xml">
+        <form string="File"> 
+            <sheet>
+                <group>
+                        <field name="category"/>
+                        <field name="category_responsible"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+
+<!--Tree View -->
+<record id="view_recommendation_types_tree" model="ir.ui.view">
+    <field name="name">recommendation.types.tree</field>
+    <field name="model">recommendation.types</field>
+    <field name="arch" type="xml">
+        <tree string="File">
+            <field name="category"/>
+            <field name="category_responsible"/>
+        </tree>
+    </field>
+</record>
+
+<record id="recommendation_types_search_view" model="ir.ui.view">
+    <field name="name">recommendation.types.search</field>
+    <field name="model">recommendation.types</field>
+    <field name="arch" type="xml">
+        <search string="Product">
+            <field name="category" string="Category"/>
+            <field name="category_responsible" string="Category Responsible"/>
+        </search>
+    </field>
+</record>
+
+<record id="action_recommendation_types" model="ir.actions.act_window">
+    <field name="name">Recommendation Types</field>
+    <field name="res_model">recommendation.types</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class = "o_view_nocontent_smiling_face">
+                Upload your file!
+        </p>
+    </field>
+</record>
+</odoo>
