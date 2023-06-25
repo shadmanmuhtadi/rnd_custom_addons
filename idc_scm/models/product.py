@@ -20,3 +20,14 @@ class ProductTemplate(models.Model):
         help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
 
     hs_code_id = fields.Many2one('scm.hscode', string='HS Code')
+
+
+class ProductCategory(models.Model):
+
+    _inherit = ['product.category']
+
+
+    sub_business = fields.Many2one('product.category', string='Sub Business', help='For example: Modelez')
+    brand = fields.Many2one('product.category', string='Brand',help='For example: Tang, cadbury')
+    category = fields.Many2one('product.category', string='Category',help='For example: Silk')
+    
