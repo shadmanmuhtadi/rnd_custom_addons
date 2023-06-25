@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <menuitem
+        id="inventory"
+        name="IDC Inventory"
+        sequence = "40"/>
+
+        <menuitem
+        id="product"
+        name="Products"
+        parent="inventory"
+        action="action_product" 
+        sequence = "20"
+        groups="idc_inventory_management.group_inventory_it,idc_inventory_management.group_inventory_it_administrator,idc_inventory_management.group_inventory_admin_administrator"/>
+
+        <menuitem
+        id="it_requisition"
+        name="IT Requisition"
+        parent="inventory"
+        action="action_it_requisition" 
+        sequence = "40"
+        />
+
+        <menuitem
+        id="requisitiontypes"
+        name="Requisition Types"
+        parent="inventory"
+        action="action_recommendation_types" 
+        sequence = "50"/>
+
+        <menuitem
+        id="vendor_details"
+        name="Vendor Details"
+        parent="inventory"
+        action="action_vendor_details" 
+        sequence = "60"
+        groups="idc_inventory_management.group_inventory_it,idc_inventory_management.group_inventory_it_administrator,idc_inventory_management.group_inventory_admin,idc_inventory_management.group_inventory_admin_administrator"/>
+
+        <menuitem
+        id="purchase_details"
+        name="Purchase Details"
+        parent="inventory"
+        action="action_purchase" 
+        sequence = "70"
+        groups="idc_inventory_management.group_inventory_it,idc_inventory_management.group_inventory_it_administrator,idc_inventory_management.group_inventory_admin,idc_inventory_management.group_inventory_admin_administrator"/>
+
+        <menuitem
+        id="assest_details"
+        name="Assest Details"
+        parent="inventory"
+        action="action_assest" 
+        sequence = "80"/>
+</odoo>
+        

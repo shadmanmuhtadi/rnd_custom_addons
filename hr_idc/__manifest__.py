@@ -32,7 +32,9 @@
         # 'hr_payroll_community',
         'hr_org_chart_overview',
         'idc_bi',
-        'idc_offtake'
+        'idc_offtake',
+        'hr_attendance_autoclose',
+        'idc_inventory_management',
     ],
     'data': [
         'security/security.xml',

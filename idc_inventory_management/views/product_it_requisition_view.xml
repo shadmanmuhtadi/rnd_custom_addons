@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--Form View -->
+<record id="view_it_requisition_form" model="ir.ui.view">
+    <field name="name">it.requisition.form</field>
+    <field name="model">it.requisition</field>
+    <field name="arch" type="xml">
+        <form string="File"> 
+            <header groups = "idc_inventory_management.group_inventory_manager,idc_inventory_management.group_inventory_hr,idc_inventory_management.group_inventory_it,idc_inventory_management.group_inventory_hr_administrator,idc_inventory_management.group_inventory_it_administrator">
+                <button id="button_draft" name="action_draft" string="Set To Draft" class="btn-primary" states="confirmed,progress" 
+                type="object" groups = "idc_inventory_management.group_user"/>
+                <button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" states="draft"
+                type="object" groups = "idc_inventory_management.group_inventory_hr,idc_inventory_management.group_inventory_manager"/>
+                <button id="button_progress" name="action_progress" string="In Progress" class="btn-primary" states="confirmed"
+                type="object" groups = "idc_inventory_management.group_inventory_it"/>
+                <button id="button_submit" name="action_submit" string="Submit" class="btn-primary"  states="progress"
+                type="object" groups = "idc_inventory_management.group_inventory_it_administrator"/>
+                <button id="button_cancel" name="action_cancel" string="Cancel" states="draft,confirmed,progress"
+                type="object" groups = "idc_inventory_management.group_inventory_it_administrator"/>    
+                <field name="state" widget="statusbar" 
+                statusbar_visible="draft,confirmed,progress,submitted"/>
+            </header>
+            <sheet>
+                <group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="employee_id"/>
+                            <field name="department"/>
+                            <field name="job_title"/>
+                            <field name="manager"/>
+                            <field name="doj"/>
+                        </group>
+                        <group groups = "idc_inventory_management.group_inventory_it,idc_inventory_management.group_inventory_it_administrator">  
+                            <field name="work_email"/>
+                            <field name="work_password"/>
+                            <field name="erp_id"/>
+                            <field name="erp_password"/>
+                        </group>
+                            <field name="recommendation"/>
+                            <sheet>
+                                <group>  
+                                    <field name="note"/>
+                                </group>
+                            </sheet>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+
+<!--Tree View -->
+<record id="view_it_requisition_tree" model="ir.ui.view">
+    <field name="name">it.requisition.tree</field>
+    <field name="model">it.requisition</field>
+    <field name="arch" type="xml">
+        <tree string="File">
+            <field name="create_date"/>
+            <field name="employee_id"/>
+            <field name="doj"/>
+            <field name="recommendation"/>
+            <field name="state" 
+            decoration-warning="state == 'draft'"
+            decoration-primary="state == 'confirmed'"
+            decoration-info="state == 'progress'"
+            decoration-success="state == 'submitted'"
+            decoration-danger="state == 'cancelled'"
+            widget="badge"
+            />
+        </tree>
+    </field>
+</record>
+
+
+<record id="it_requisition_search_view" model="ir.ui.view">
+    <field name="name">it.requisition.search</field>
+    <field name="model">it.requisition</field>
+    <field name="arch" type="xml">
+        <search string="Product">
+            <field name="employee_id" string="Employee"/>
+            <field name="state" string="State"/>
+        </search>
+    </field>
+</record>
+
+
+<record id="action_it_requisition" model="ir.actions.act_window">
+    <field name="name">IT Requisition</field>
+    <field name="res_model">it.requisition</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class = "o_view_nocontent_smiling_face">
+                Upload your file!
+        </p>
+    </field>
+</record>
+</odoo>

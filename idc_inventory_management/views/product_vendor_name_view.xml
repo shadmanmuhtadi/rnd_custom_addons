@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+<!--Form View -->
+<record id="view_vendor_details_form" model="ir.ui.view">
+    <field name="name">vendor.details.form</field>
+    <field name="model">vendor.details</field>
+    <field name="arch" type="xml">
+        <form string="File">
+            <sheet>
+                <group>
+                        <field name="vendor"/>
+                        <field name="vendor_person_number"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+
+<!--Tree View -->
+<record id="view_vendor_details_tree" model="ir.ui.view">
+    <field name="name">vendor.details.tree</field>
+    <field name="model">vendor.details</field>
+    <field name="arch" type="xml">
+        <tree string="File">
+            <field name="vendor"/>
+            <field name="vendor_person_number"/>
+        </tree>
+    </field>
+</record>
+
+<record id="action_vendor_details" model="ir.actions.act_window">
+    <field name="name">Vendor</field>
+    <field name="res_model">vendor.details</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+        <p class = "o_view_nocontent_smiling_face">
+                Upload your file!
+        </p>
+    </field>
+</record>
+</odoo>
