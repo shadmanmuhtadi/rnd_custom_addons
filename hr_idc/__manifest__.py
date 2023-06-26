@@ -34,7 +34,6 @@
         'idc_bi',
         'idc_offtake',
         'hr_attendance_autoclose',
-        'idc_inventory_management',
     ],
     'data': [
         'security/security.xml',
