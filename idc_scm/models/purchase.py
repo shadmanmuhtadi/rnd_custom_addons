@@ -33,10 +33,12 @@ class PurchaseOrder(models.Model):
 
 class Port(models.Model):
     _name = "scm.port"
+    _rec_name = 'discharge_port'
 
     discharge_port = fields.Char(string="Discharge Port")
 
 class Ship(models.Model):
     _name = "scm.ship"
+    _rec_name = 'ship_from'
 
     ship_from = fields.Char(string="Ship From")
