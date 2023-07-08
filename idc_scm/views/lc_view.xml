@@ -116,7 +116,7 @@
 
     <menuitem
         id="scm_lc"
-        name="LC"
+        name="Letter of Credit"
         action="action_scm_lc"
         parent="purchase.menu_purchase_root"
         sequence="5"/>

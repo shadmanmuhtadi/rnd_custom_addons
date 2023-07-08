@@ -14,7 +14,7 @@ class PurchaseOrder(models.Model):
         ('air', 'Air'),
         ('road', 'Road')], 
         default='sea',
-        string="Ship Mode")
+        string="Shipping Mode")
     discharge_port_id = fields.Many2one('scm.port',string="Discharge Port")
     ship_from_id = fields.Many2one('scm.ship',string="Ship From")
     incoterm = fields.Many2one(
