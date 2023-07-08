@@ -14,6 +14,7 @@ class lc(models.Model):
     notes = fields.Html('Terms and Conditions')
     lc_no = fields.Char(string='LC No')
     partner_id = fields.Many2one('res.partner', string='Principle', store=True)
+    bank_name_id = fields.Many2one('scm.bank', string="Bank Name")
 
     shipment_date = fields.Datetime(string="Approx. Shipment Date", tracking=True)
     arrival_date = fields.Datetime(string="Approx. Arrival Date", tracking=True)
@@ -84,5 +85,8 @@ class order_lc(models.Model):
     lc_id = fields.Many2one('scm.lc',string='lc_id')
 
 
+class Bank(models.Model):
+    _name = "scm.bank"
 
+    bank_name = fields.Char(string="Bank Name")
 

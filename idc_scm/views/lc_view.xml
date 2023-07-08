@@ -48,7 +48,7 @@
                         <group>
                             <field name="lc_date"/>
                             <field name="lc_no"/>
-                            <!-- <field name="incoterms"/> -->
+                            <field name="bank_name_id"/>
                         </group>
                         <group>
                             <!-- <field name="supplier_name_id"/> -->
