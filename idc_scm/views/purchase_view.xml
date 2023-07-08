@@ -41,6 +41,7 @@
         <field name="arch" type="xml">
             <xpath expr="//header/button[@name='action_view_picking']" position="before">
                 <button name="action_in_lc" string="Lc Confirm" class="oe_highlight" type="object" states="purchase"/>
+                <button name="action_in_lc_cancel" string="LC Cancel" class="oe_highlight" type="object" states="lc_confirm"/>
             </xpath>
              <xpath expr="//button[@name='action_view_picking']" position="attributes">
                 <attribute name="states">lc_confirm</attribute>
@@ -62,6 +63,24 @@
             </xpath>
         </field>
     </record>
+
+    <record id="purchase_order_inherit_shipment_idc" model="ir.ui.view">
+            <field name="name">Purchase Order</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="shipment_management_bs.purchase_order_inherit_shipment"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//button[@name='action_open_shipments']" position="replace">
+                    <button name="action_open_shipments" class="oe_stat_button"
+                            icon="fa-ship" type="object"
+                            attrs="{'invisible': ['|',('is_shipment', '!=', True),('state', 'not in', ['lc_confirm','done'])]}">
+                        <field
+                                name="shipments_count"
+                                widget="statinfo" string="Shipments"/>
+                    </button>
+                </xpath>
+            </field>
+        </record>
 
     <!-- Renaming menu -->
 

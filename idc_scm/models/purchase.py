@@ -9,3 +9,7 @@ class PurchaseOrder(models.Model):
     def action_in_lc(self):
         for rec in self:
             rec.state = 'lc_confirm'
+
+    def action_in_lc_cancel(self):
+        for rec in self:
+            rec.state = 'purchase'
