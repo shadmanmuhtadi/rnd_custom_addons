@@ -78,7 +78,7 @@
         id="menu_hs_code"
         name="HS Code"
         action="action_scm_hs_code"
-        parent="purchase.menu_purchase_products"
+        parent="idc_scm.menu_scm_master_data_inherit"
         sequence="22"
     />
 

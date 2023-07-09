@@ -49,17 +49,6 @@
         </field>
     </record>
 
-    <!-- <record id="view_purchase_order_title_form_inherit" model="ir.ui.view">
-        <field name="name">view.purchase.order.title.form.inherit</field>
-        <field name="model">purchase.order</field>
-        <field name="inherit_id" ref="purchase.report_purchase_quotation" />
-        <field name="arch" type="xml">
-             <xpath expr="//field[@name='print_report_name']" position="attributes">
-                <attribute name="string">Proforma Invoice</attribute>
-            </xpath>
-        </field>
-    </record> -->
-
 
     <record id="view_purchase_order_form_inherit" model="ir.ui.view">
         <field name="name">view.purchase.order_form.inherit</field>
@@ -70,12 +59,6 @@
             <xpath expr="//span[hasclass('o_form_label')]" position="replace">
                 <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Request for Purchase Order</span>
             </xpath>
-            <!-- <xpath expr="//form[hasclass('o_purchase_order')]" position="replace">
-                <form string="Proforma Invoice"></form>
-            </xpath> -->
-            <!-- <xpath expr="//span[hasclass('o_form_label')]" position="attributes">
-                <attribute name="invisible">True</attribute>
-            </xpath> -->
             <!-- Renaming print rfq button -->
             <xpath expr="//header/button[@name='print_quotation']" position="attributes">
                 <attribute name="string">Print Purchase Order</attribute>

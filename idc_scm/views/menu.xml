@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-<menuitem
-        id="menu_scm_master_root"
+    <menuitem
+        id="purchase.menu_scm_master_root"
         name="IDC Purchase"
         sequence="0"/>
+
+
+    <menuitem
+        id="menu_scm_master_data_inherit"
+        name="Master Data"
+        parent="purchase.menu_purchase_root"
+        sequence="8"/>
+
+    <menuitem
+        id="menu_purchase_product_categories_inherit"
+        name="Product Categories"
+        action="product.product_category_action_form"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+        
+    <menuitem
+        id="menu_purchase_product_inherit"
+        name="Products"
+        action="purchase.product_normal_action_puchased"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_principles_inherit"
+        name="Principles"
+        action="account.res_partner_action_supplier"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+        
 
     <!-- <menuitem
         id="menu_scm_master"
