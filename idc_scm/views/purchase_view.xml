@@ -11,7 +11,7 @@
                 statusbar_visible="draft,sent,purchase,lc_confirm"/>
             </xpath> -->
 
-            <!-- statusbar     -->
+            <!-- statusbar -->
             <field name="state" position="replace">
                 <field name="state" widget="statusbar" 
                     statusbar_visible="draft,sent,purchase,lc_confirm"/>
@@ -49,6 +49,17 @@
         </field>
     </record>
 
+    <!-- <record id="view_purchase_order_title_form_inherit" model="ir.ui.view">
+        <field name="name">view.purchase.order.title.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.report_purchase_quotation" />
+        <field name="arch" type="xml">
+             <xpath expr="//field[@name='print_report_name']" position="attributes">
+                <attribute name="string">Proforma Invoice</attribute>
+            </xpath>
+        </field>
+    </record> -->
+
 
     <record id="view_purchase_order_form_inherit" model="ir.ui.view">
         <field name="name">view.purchase.order_form.inherit</field>
@@ -58,8 +69,13 @@
             <!-- Renaming document title (request for quotation) -->
             <xpath expr="//span[hasclass('o_form_label')]" position="replace">
                 <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Request for Purchase Order</span>
-                <span class="o_form_label" attrs="{'invisible': [('state','in',('draft','sent'))]}">Proforma Invoice</span>
             </xpath>
+            <!-- <xpath expr="//form[hasclass('o_purchase_order')]" position="replace">
+                <form string="Proforma Invoice"></form>
+            </xpath> -->
+            <!-- <xpath expr="//span[hasclass('o_form_label')]" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath> -->
             <!-- Renaming print rfq button -->
             <xpath expr="//header/button[@name='print_quotation']" position="attributes">
                 <attribute name="string">Print Purchase Order</attribute>
@@ -88,22 +104,22 @@
     </record>
 
     <record id="purchase_order_inherit_shipment_idc" model="ir.ui.view">
-            <field name="name">Purchase Order</field>
-            <field name="model">purchase.order</field>
-            <field name="inherit_id" ref="shipment_management_bs.purchase_order_inherit_shipment"/>
-            <field name="arch" type="xml">
+        <field name="name">Purchase Order</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="shipment_management_bs.purchase_order_inherit_shipment"/>
+        <field name="arch" type="xml">
 
-                <xpath expr="//button[@name='action_open_shipments']" position="replace">
-                    <button name="action_open_shipments" class="oe_stat_button"
-                            icon="fa-ship" type="object"
-                            attrs="{'invisible': ['|',('is_shipment', '!=', True),('state', 'not in', ['lc_confirm','done'])]}">
-                        <field
-                                name="shipments_count"
-                                widget="statinfo" string="Shipments"/>
-                    </button>
-                </xpath>
-            </field>
-        </record>
+            <xpath expr="//button[@name='action_open_shipments']" position="replace">
+                <button name="action_open_shipments" class="oe_stat_button"
+                        icon="fa-ship" type="object"
+                        attrs="{'invisible': ['|',('is_shipment', '!=', True),('state', 'not in', ['lc_confirm','done'])]}">
+                    <field
+                            name="shipments_count"
+                            widget="statinfo" string="Shipments"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
 
     <!-- Renaming menu -->
 
@@ -124,6 +140,9 @@
     </record>
     <record id="purchase.menu_procurement_management_supplier_name" model="ir.ui.menu">
         <field name="name">Principles</field>
+    </record>
+    <record id="shipment_management_bs.menu_purchase_shipment" model="ir.ui.menu">
+        <field name="name">Shipment</field>
     </record>
 
 </odoo>
