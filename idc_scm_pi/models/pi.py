@@ -10,15 +10,34 @@ class PurhcasePi(models.Model):
     _rec_name = 'ref'
 
 
-    ref = fields.Char(string='PO Reference', default=lambda self: self._get_next_purchaseref(), store=True, readonly=True)
+    ref = fields.Char(string='PI Reference', default=lambda self: self._get_next_purchaseref(), store=True, readonly=True)
     company_id = fields.Many2one('res.company', 'Company', copy=False,default=lambda self: self.env.company,readonly=True)
     pi_lines = fields.One2many('purchase.pi.line', 'pi_id', string='Purchase order Lines', copy=True)
     
     po_id = fields.Many2one('purchase.po', string='Purchase Order')
 
     pi_date = fields.Datetime('Order Date', required=True, index=True, copy=False, )
-    partner_id = fields.Many2one('res.partner', string='Partner', store=True)
+    partner_id = fields.Many2one('res.partner', related='po_id.partner_id', string='Partner', store=True)
 
+
+    purchase_id = fields.Many2one('purchase.order', string='Purchase')
+    #-------------------------------------------------------------------------
+
+    def _create_purchase_order_lines_context(self, purchase_id):
+        lines = []
+        for line in self.pi_lines:
+            if line.product_qty > 0:
+                lines.append((
+                    0, 0, {
+                        'product_id': line.product_id.id,
+                        'product_qty': line.qty_approved,
+                    }
+                ))
+            else:
+                continue
+        return lines
+    
+#----------------------------------------------------------------------------   
 #---------------------------------------------------------------------
 
     @api.onchange('po_id')
@@ -58,4 +77,6 @@ class PurhcasePiLine(models.Model):
     product_uom = fields.Many2one('uom.uom', related='product_id.uom_id', string='Unit of Measure', )
     price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
     product_packaging_id = fields.Many2one('product.packaging', string='Packaging', domain="[('purchase', '=', True), ('product_id', '=', product_id)]", check_company=True)
-    product_qty = fields.Float(string='Qty', digits='Product Unit of Measure', required=True)
+    product_qty = fields.Float(string='Ordered Qty', digits='Product Unit of Measure', required=True)
+    qty_approved = fields.Float(string='Approved Qty')
+    remaining_qty = fields.Float(string='Remaining Qty')

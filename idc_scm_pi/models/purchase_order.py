@@ -13,8 +13,20 @@ class PurchaseOrder(models.Model):
         'cancel': [('readonly', True)],
     }
     
-    # po_id = fields.Many2one('purchase.order.pi', string='Purchase Order')
+    pi_ids = fields.One2many('purchase.pi','purchase_id', string='Proforma Invoices Order')
 
+    @api.onchange('pi_ids')
+    def _onchange_pi_ids(self):
+        #without this validation order line adds under previous line
+        # if self.order_line: 
+        #     raise UserError(
+        #         _(
+        #             "Please remove lines and select Purchase Order again "
+        #         )
+        #     )
+        if self.pi_ids:
+            order_line = self.pi_ids._create_purchase_order_lines_context(self.pi_ids.pi_lines)
+            self.order_line = order_line
     #check them in comunity purchase.order model
     
     # partner_id = fields.Many2one('res.partner',

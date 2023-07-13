@@ -35,6 +35,8 @@
                                         <field name="product_packaging_id" />
                                         <field name="price_unit" />
                                         <field name="product_qty" />
+                                        <field name="remaining_qty" />
+                                        <field name="qty_approved" />
                                     </tree>
                                 </field>
                             </page>

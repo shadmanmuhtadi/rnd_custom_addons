@@ -50,7 +50,7 @@ class PurchasePo(models.Model):
         pi_ids = self.mapped('pi_lines')
         domain = "[('id','in',%s)]" % (pi_ids.ids)
         context = {
-            'default_purchase_id': self.id,
+            'default_po_id': self.id,
         }
         return {
             'name': _("Proforma Invoices"),
@@ -78,7 +78,7 @@ class PurchasePoLine(models.Model):
 
     product_id = fields.Many2one('product.product', string='Product', change_default=True)
     product_uom = fields.Many2one('uom.uom', related='product_id.uom_id', string='Unit of Measure', )
-    price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
+    price_unit = fields.Float(string='Unit Price', required=True, related='product_id.unit_price', digits='Product Price')
     product_packaging_id = fields.Many2one('product.packaging', string='Packaging', domain="[('purchase', '=', True), ('product_id', '=', product_id)]", check_company=True)
 
 

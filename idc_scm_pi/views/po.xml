@@ -64,6 +64,7 @@
                     <field name="company_id" />
                     <field name="partner_id" />
                     <field name="pi_count" string="Number of PI" />
+                    <field name="order_date" />
                 </tree>
             </field>
         </record>
