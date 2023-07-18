@@ -6,7 +6,7 @@
         sequence="0"/>
 
 
-    <menuitem
+    <!-- <menuitem
         id="menu_scm_master_data_inherit"
         name="Master Data"
         parent="purchase.menu_purchase_root"
@@ -17,9 +17,9 @@
         name="Product Categories"
         action="product.product_category_action_form"
         parent="menu_scm_master_data_inherit"
-        sequence="1"/>
+        sequence="1"/> -->
         
-    <menuitem
+    <!-- <menuitem
         id="menu_purchase_product_inherit"
         name="Products"
         action="purchase.product_normal_action_puchased"
@@ -31,31 +31,6 @@
         name="Principles"
         action="account.res_partner_action_supplier"
         parent="menu_scm_master_data_inherit"
-        sequence="1"/>
-        
-
-    <!-- <menuitem
-        id="menu_scm_master"
-        name="Orders"
-        action="hr.action_hr_job"
-        parent="menu_scm_master_root"
         sequence="1"/> -->
-
-    <!-- <menuitem
-        id="menu_scm_product"
-        name="Products"
-        action="hr.hr_department_kanban_action"
-        parent="menu_scm_master_root"
-        groups=""
-        sequence="3"/> -->
-
-
-    <!-- <menuitem 
-        id="menu_hr_user_inherit"
-        name="Users"
-        action="base.action_res_users"
-        parent="hr.menu_hr_employee_payroll"
-        groups=""
-        sequence="6"/> -->
 
 </odoo>
