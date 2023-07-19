@@ -9,3 +9,10 @@ access_purchase_order_pi,purchase.order,model_purchase_pi,purchase.group_purchas
 access_purchase_order_pi_manager,purchase.order,model_purchase_pi,purchase.group_purchase_manager,1,1,1,1
 access_purchase_po_line,purchase.order.line user,idc_scm_pi.model_purchase_pi_line,purchase.group_purchase_user,1,1,1,1
 access_purchase_pi_line_manager,purchase.order.line,idc_scm_pi.model_purchase_pi_line,purchase.group_purchase_manager,1,1,1,1
+
+
+access_purchase_order_copy,purchase.order.copyorder,model_purchase_order_copy,purchase.group_purchase_user,1,1,1,1
+access_purchase_order_line_copy,purchase.order.line.copyorder,model_purchase_order_line_copy,purchase.group_purchase_user,1,1,1,1
+
+access_purchase_order_pi_copy,purchase.order.pi.copyorder,model_purchase_order_pi_copy,purchase.group_purchase_user,1,1,1,1
+access_purchase_order_pi_line_copy,purchase.order.pi.line.copyorder,model_purchase_order_pi_line_copy,purchase.group_purchase_user,1,1,1,1

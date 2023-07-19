@@ -13,13 +13,11 @@ class PurhcasePi(models.Model):
     ref = fields.Char(string='PI Reference', default=lambda self: self._get_next_purchaseref(), store=True, readonly=True)
     company_id = fields.Many2one('res.company', 'Company', copy=False,default=lambda self: self.env.company,readonly=True)
     pi_lines = fields.One2many('purchase.pi.line', 'pi_id', string='Purchase order Lines', copy=True)
-    
-    po_id = fields.Many2one('purchase.po', string='Purchase Order')
-
     pi_date = fields.Datetime('Order Date', required=True, index=True, copy=False, )
     partner_id = fields.Many2one('res.partner', related='po_id.partner_id', string='Partner', store=True)
-
-
+    
+    
+    po_id = fields.Many2one('purchase.po', string='Purchase Order')
     purchase_id = fields.Many2one('purchase.order', string='Purchase')
     #-------------------------------------------------------------------------
 

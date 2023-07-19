@@ -16,7 +16,11 @@
         'data/data.xml',
         'views/pi.xml',
         'views/po.xml',
-        'views/purchase_order.xml'
+        # 'views/po_using_purchase_order_model.xml',
+        'views/purchase_views_copy.xml',
+        'views/pi_using_purchase_order_model.xml',
+        'views/lc_view.xml'
+
     ],
     'application': True,
     'installable': True,

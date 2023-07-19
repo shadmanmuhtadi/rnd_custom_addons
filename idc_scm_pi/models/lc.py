@@ -1,9 +1,10 @@
 
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError
+import logging
+logger = logging.getLogger("Your Message")
 
-
-class PurchaseOrder(models.Model):
+class lc(models.Model):
     _inherit = 'purchase.order'
     
 
@@ -13,19 +14,34 @@ class PurchaseOrder(models.Model):
         'cancel': [('readonly', True)],
     }
     
-    # pi_ids = fields.One2many('purchase.pi','purchase_id', string='Proforma Invoices Order')
+    pi_ids = fields.One2many('purchase.order.pi.copy','lc_id', string='Proforma Invoices')
 
-    # @api.onchange('pi_ids')
-    # def _onchange_pi_ids(self):
-    #     if self.order_line: 
-    #         raise UserError(
-    #             _(
-    #                 "Please remove lines and select Purchase Order again "
-    #             )
-    #         )
-    #     if self.pi_ids:
-    #         order_line = self.pi_ids._create_purchase_order_lines_context(self.pi_ids.pi_lines)
-    #         self.order_line = order_line
+    #based on the selected pi_ids the orderline gets populated
+    @api.onchange('pi_ids')
+    def _onchange_pi_ids(self):
+        if self.pi_ids:
+            order_line = self.pi_ids._create_lc_lines_context(self.pi_ids.order_line)
+            self.order_line = order_line
+
+
+#to sum up the duplicate sku quantity in lc
+class purchase_order_line(models.Model):
+    _inherit = 'purchase.order.line'
+
+    @api.model
+    def create(self, vals):
+        same_line = self.search([('product_id', '=', vals.get('product_id', False)),
+                                ('order_id', '=', vals.get('order_id', False))])
+        if same_line:
+            total_qty = same_line.product_qty + vals.get('product_qty', 0)
+            vals.update({
+                'product_qty': total_qty,
+            })
+            same_line.write(vals)
+            return same_line
+        else:
+            return super(purchase_order_line, self).create(vals)
+
     #check them in comunity purchase.order model
     
     # partner_id = fields.Many2one('res.partner',
