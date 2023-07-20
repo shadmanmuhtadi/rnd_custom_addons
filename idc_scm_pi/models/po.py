@@ -1,45 +1,70 @@
+
+
 from odoo import api, fields, exceptions, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
+import logging
+logger = logging.getLogger("Your Message")
 
 
-class PurchasePo(models.Model):
+class PurhcasePo(models.Model):
     _name = "purchase.po"
-    _inherit = ['mail.thread', 'mail.activity.mixin']
-    _description = "Purchase Order"
-    _order = 'id desc'
-    _rec_name = 'ref'
+    _inherit = ['purchase.order','mail.thread', 'mail.activity.mixin']
+    _description = "Purchase PO"
 
+    READONLY_STATES = {
+        'purchase': [('readonly', True)],
+        'done': [('readonly', True)],
+        'cancel': [('readonly', True)],
+    }
+    order_type = fields.Selection([
+        ('import', 'Import'),
+        ('local', 'Local'),
+        ('third_party', 'Third Party'),
+        ('others', 'Others'),
+    ], string='Order Type', index=True, copy=False, default='import', tracking=True)
+    
+    partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('to approve', 'To Approve'),
+        ('sent', 'Approved'),
+        ('purchase', 'PI Received'),
+        ('done', 'Done'),
+        ('cancel', 'Cancelled')
+    ], string='Status', readonly=True, index=True, copy=False, default='draft', tracking=True)
 
-    ref = fields.Char(string='PO Reference', default=lambda self: self._get_next_purchaseref(), store=True, readonly=True)
-    company_id = fields.Many2one('res.company', 'Company', copy=False,default=lambda self: self.env.company,readonly=True)
-    po_lines = fields.One2many('purchase.po.line', 'po_id', string='Purchase order Lines', copy=True)
-    order_date = fields.Datetime('Order Date', required=True, index=True, copy=False, )
-    partner_id = fields.Many2one('res.partner', string='Partner', store=True)
+    order_line = fields.One2many('purchase.po.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)
 
     pi_lines = fields.One2many('purchase.pi','po_id', string='', copy=False)
-    pi_count = fields.Integer(compute="_compute_purchase_orders", string='PI Count', copy=False, default=0, store=True)
+    pi_count = fields.Integer(compute="_compute_pi_orders", string='PI Count', copy=False, default=0, store=True)
 
-    @api.model
-    def _get_next_purchaseref(self):
-        sequence = self.env['ir.sequence'].search([('code','=','purchase.po')])
-        next= sequence.get_next_char(sequence.number_next_actual)
-        return next
-
-    @api.model
-    def create(self, vals):
-        vals['ref'] = self.env['ir.sequence'].next_by_code('purchase.po')
-        result = super(PurchasePo, self).create(vals)
-        return result
+    def button_confirm(self):
+        for rec in self:
+            rec.state = 'purchase'
     
+    def button_approve(self):
+        for rec in self:
+            rec.state = 'sent'
+    def button_done(self):
+        for rec in self:
+            rec.state = 'done'
+    def button_cancel(self):
+        for rec in self:
+            rec.state = 'cancel'
+
 #-------------------------------------------------------------------------
     def _create_pi_lines_context(self, pi_ids):
         lines = []
-        for line in self.po_lines:
+        for line in self.order_line:
             if line.product_qty > 0:
                 lines.append((
                     0, 0, {
                         'product_id': line.product_id.id,
-                        'product_qty': line.product_qty,
+                        'name': line.name,
+                        'product_uom':line.product_uom,
+                        'price_unit':line.price_unit,
+                        'price_subtotal':line.price_subtotal,
+                        'qty_ordered': line.product_qty, #sending the quantity in order quantity, in product_qty user will put the approved quantity, which will go to lc lines
                     }
                 ))
             else:
@@ -62,24 +87,36 @@ class PurchasePo(models.Model):
             'domain': domain,
             'context': context
         }
+    
     @api.depends('pi_lines')
-    def _compute_purchase_orders(self):
+    def _compute_pi_orders(self):
         for order in self:
             pis = order.mapped('pi_lines')
             order.pi_count = len(pis)
-    
-    
-    
-class PurchasePoLine(models.Model):
-    _name = 'purchase.po.line'
 
-    po_id = fields.Many2one('purchase.po', string='Order Reference', index=True, required=True,
-                                  ondelete='cascade')
+    #sequence for po
+    @api.model
+    def create(self, vals):
+        company_id = vals.get('company_id', self.default_get(['company_id'])['company_id'])
+        # Ensures default picking type and currency are taken from the right company.
+        self_comp = self.with_company(company_id)
+        if vals.get('name', 'New') == 'New':
+            seq_date = None
+            if 'date_order' in vals:
+                seq_date = fields.Datetime.context_timestamp(self, fields.Datetime.to_datetime(vals['date_order']))
+            vals['name'] = self_comp.env['ir.sequence'].next_by_code('purchase.po', sequence_date=seq_date) or '/'
+        vals, partner_vals = self._write_partner_values(vals)
+        res = super(PurhcasePo, self_comp).create(vals)
+        if partner_vals:
+            res.sudo().write(partner_vals)  # Because the purchase user doesn't have write on `res.partner`
+        return res
 
-    product_id = fields.Many2one('product.product', string='Product', change_default=True)
-    product_uom = fields.Many2one('uom.uom', related='product_id.uom_id', string='Unit of Measure', )
-    price_unit = fields.Float(string='Unit Price', required=True, digits='Product Price')
-    product_packaging_id = fields.Many2one('product.packaging', string='Packaging', domain="[('purchase', '=', True), ('product_id', '=', product_id)]", check_company=True)
+class PurhcasePoline(models.Model):
+    _name = "purchase.po.line"
+    _inherit = ['purchase.order.line']
+    _description = "Purchase po order line"
 
 
-    product_qty = fields.Float(string='Qty', digits='Product Unit of Measure', required=True)
+    order_id = fields.Many2one('purchase.po', string='Order Reference', index=True, required=True, ondelete='cascade')
+
+

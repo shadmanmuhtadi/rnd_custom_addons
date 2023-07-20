@@ -14,13 +14,9 @@
     'data': [
         'security/ir.model.access.csv',
         'data/data.xml',
-        'views/pi.xml',
-        'views/po.xml',
-        # 'views/po_using_purchase_order_model.xml',
-        'views/purchase_views_copy.xml',
-        'views/pi_using_purchase_order_model.xml',
-        'views/lc_view.xml'
-
+        'views/po_view.xml',
+        'views/pi_view.xml',
+        'views/lc_view.xml',
     ],
     'application': True,
     'installable': True,

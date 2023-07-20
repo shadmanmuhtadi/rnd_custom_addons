@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-        <record id="purchase_order_pi_form" model="ir.ui.view">
-            <field name="name">purchase.order.pi.copy.form</field>
-            <field name="model">purchase.order.pi.copy</field>
+        <record id="purchase_order_form" model="ir.ui.view">
+            <field name="name">purchase.po.form</field>
+            <field name="model">purchase.po</field>
             <field name="arch" type="xml">
                 <form string="Purchase Order" class="o_purchase_order">
                 <header>
@@ -13,7 +13,14 @@
                     <button name="button_cancel" states="draft,to approve,sent,purchase" string="Cancel" type="object" data-hotkey="x" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,to approve,send,purchase,done" readonly="1"/>
                 </header>
+                
                 <sheet>
+                <div class="oe_button_box" name="button_box">
+                        <button name="action_open_pi" class="oe_stat_button"
+                            icon="fa-bars" type="object">
+                        <field name="pi_count" widget="statinfo" string="Proforma Invoices"/>
+                    </button>
+                    </div>
                     <div class="oe_button_box" name="button_box">
                         <button type="object"  name="action_view_invoice"
                             class="oe_stat_button"
@@ -32,10 +39,10 @@
                     </div>
                     <group>
                         <group>
+                            <field name="order_type"/>
                             <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
                                 placeholder="Name, TIN, Email, or Reference"
                             />
-                            <field name="po_id" force_save="1"/>
                             <field name="partner_ref"/>
                             <field name="currency_id" groups="base.group_multi_currency" force_save="1"/>
                             <field name="id" invisible="1"/>
@@ -99,7 +106,6 @@
                                     <field name="date_planned" optional="hide" attrs="{'required': [('display_type', '=', False)]}" force_save="1"/>
                                     <field name="account_analytic_id" optional="hide" context="{'default_partner_id':parent.partner_id}" groups="analytic.group_analytic_accounting" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
                                     <field name="analytic_tag_ids" optional="hide" groups="analytic.group_analytic_tags" widget="many2many_tags" options="{'color_field': 'color'}" domain="['|', ('company_id', '=', False), ('company_id', '=', parent.company_id)]"/>
-                                    <field name="qty_ordered"/>
                                     <field name="product_qty"/>
                                     <field name="qty_received_manual" invisible="1"/>
                                     <field name="qty_received_method" invisible="1"/>
@@ -255,26 +261,26 @@
         </record>
 
 
-        <record id="purchase_order_pi_tree" model="ir.ui.view">
-            <field name="name">purchase.order.pi.copy.tree</field>
-            <field name="model">purchase.order.pi.copy</field>
+        <record id="purchase_order_tree" model="ir.ui.view">
+            <field name="name">purchase.po.tree</field>
+            <field name="model">purchase.po</field>
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <tree string="Purchase Order"
                       decoration-muted="state=='cancel'" sample="1">
                     <field name="priority" optional="show" widget="priority" nolabel="1"/>
                     <field name="partner_ref" optional="hide"/>
-                    <field name="po_id" string="PO Reference"/>
-                    <field name="name" string="PI Reference" readonly="1" decoration-info="state in ('draft','sent')"/>
-                    <field name="date_order" invisible="not context.get('quotation_only', False)" optional="show"/>
+                    <field name="name" string="PO Ref" readonly="1" decoration-info="state in ('draft','sent')"/>
+                    <field name="date_order" string="Order Date" invisible="not context.get('quotation_only', False)" optional="show"/>
                     <field name="date_approve" invisible="context.get('quotation_only', False)" optional="show"/>
-                    <field name="partner_id" readonly="1"/>
+                    <field name="partner_id" string="Supplier" readonly="1"/>
                     <field name="company_id" readonly="1" options="{'no_create': True}"
                         groups="base.group_multi_company" optional="show"/>
                     <field name="date_planned" invisible="context.get('quotation_only', False)" optional="show"/>
                     <field name="user_id" optional="show"/>
                     <field name="origin" optional="show"/>
                     <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed" widget="monetary" optional="hide"/>
+                    <field name="pi_count" string="Number of PI" optional="show"/>
                     <field name="amount_total" sum="Total amount" widget="monetary" optional="show"/>
                     <field name="currency_id" invisible="1"/>
                     <field name="state" optional="show"/>
@@ -285,29 +291,26 @@
         </record>
 
 
-        <record id="purchase_purchase_order_pi_copy_form_action_generic" model="ir.actions.act_window">
-            <field name="name">Proforma Invoice</field>
+        <record id="purchase_purchase_order_copy_form_action_generic" model="ir.actions.act_window">
+            <field name="name">Purchase Order</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order.pi.copy</field>
+            <field name="res_model">purchase.po</field>
             <field name="view_mode">tree,form</field>
-            <field name="view_id" ref="purchase_order_pi_tree"/>
+            <field name="view_id" ref="purchase_order_tree"/>
             <field name="domain">[]</field>
             <field name="context">{'quotation_only': True}</field>
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
-                No request for Proforma Invoice found. Let's create one!
-              </p><p>
-                Requests for quotation are documents that will be sent to your suppliers to request prices for different products you consider buying.
-                Once an agreement has been found with the supplier, they will be confirmed and turned into purchase orders.
+                No request for Purchase Order found. Let's create one!
               </p>
             </field>
         </record>
 
 
          <menuitem 
-            action="purchase_purchase_order_pi_copy_form_action_generic"
-            name="purchase order pi copy from original view"
-            id="menu_purchase_pi_copy"
+            action="purchase_purchase_order_copy_form_action_generic"
+            name="Purchase Order PO"
+            id="menu_purchase_po"
             parent="purchase.menu_procurement_management"
             sequence="-4" />
 

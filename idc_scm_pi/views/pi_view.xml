@@ -2,8 +2,8 @@
 <odoo>
 
         <record id="purchase_order_pi_form" model="ir.ui.view">
-            <field name="name">purchase.order.pi.copy.form</field>
-            <field name="model">purchase.order.pi.copy</field>
+            <field name="name">purchase.pi.form</field>
+            <field name="model">purchase.pi</field>
             <field name="arch" type="xml">
                 <form string="Purchase Order" class="o_purchase_order">
                 <header>
@@ -23,8 +23,7 @@
                         </button>
                     </div>
                     <div class="oe_title">
-                        <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Request for Order </span>
-                        <span class="o_form_label" attrs="{'invisible': [('state','in',('draft','sent'))]}">Purchase Order </span>
+                        <span class="o_form_label" attrs="{'invisible': [('state','not in',('draft','sent'))]}">Request for Proforma Invoice </span>
                         <h1>
                             <field name="priority" widget="priority" class="mr-3"/>
                             <field name="name" readonly="1"/>
@@ -256,8 +255,8 @@
 
 
         <record id="purchase_order_pi_tree" model="ir.ui.view">
-            <field name="name">purchase.order.pi.copy.tree</field>
-            <field name="model">purchase.order.pi.copy</field>
+            <field name="name">purchase.pi.tree</field>
+            <field name="model">purchase.pi</field>
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
                 <tree string="Purchase Order"
@@ -288,7 +287,7 @@
         <record id="purchase_purchase_order_pi_copy_form_action_generic" model="ir.actions.act_window">
             <field name="name">Proforma Invoice</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">purchase.order.pi.copy</field>
+            <field name="res_model">purchase.pi</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="purchase_order_pi_tree"/>
             <field name="domain">[]</field>
@@ -296,9 +295,6 @@
             <field name="help" type="html">
               <p class="o_view_nocontent_smiling_face">
                 No request for Proforma Invoice found. Let's create one!
-              </p><p>
-                Requests for quotation are documents that will be sent to your suppliers to request prices for different products you consider buying.
-                Once an agreement has been found with the supplier, they will be confirmed and turned into purchase orders.
               </p>
             </field>
         </record>
@@ -306,8 +302,8 @@
 
          <menuitem 
             action="purchase_purchase_order_pi_copy_form_action_generic"
-            name="purchase order pi copy from original view"
-            id="menu_purchase_pi_copy"
+            name="proforma Invoices PI"
+            id="menu_purchase_pi"
             parent="purchase.menu_procurement_management"
             sequence="-4" />
 

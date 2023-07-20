@@ -14,7 +14,7 @@ class lc(models.Model):
         'cancel': [('readonly', True)],
     }
     
-    pi_ids = fields.One2many('purchase.order.pi.copy','lc_id', string='Proforma Invoices')
+    pi_ids = fields.One2many('purchase.pi','lc_id', string='Proforma Invoices')
 
     #based on the selected pi_ids the orderline gets populated
     @api.onchange('pi_ids')

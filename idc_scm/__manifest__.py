@@ -19,8 +19,6 @@
         'views/product_view.xml',
         'views/purchase_view.xml', 
         'views/master_view.xml',
-        'views/po_view.xml',
-        'views/pi_view.xml'
     ],
     'installable': True,
     'auto_install': False,

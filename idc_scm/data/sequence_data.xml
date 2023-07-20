@@ -7,22 +7,4 @@
             <field name="padding">5</field>
             <field name="company_id" eval="False"/>
         </record>
-
-        <!-- Sequences for purchase.order.po -->
-        <record id="seq_purchase_order" model="ir.sequence">
-            <field name="name">Purchase Order</field>
-            <field name="code">purchase.po</field>
-            <field name="prefix">PO</field>
-            <field name="padding">5</field>
-            <field name="company_id" eval="False"/>
-        </record>
-
-        <!-- Sequences for purchase.order.pi -->
-        <record id="seq_purchase_order_pi" model="ir.sequence">
-            <field name="name">Purchase pi</field>
-            <field name="code">purchase.pi</field>
-            <field name="prefix">PI</field>
-            <field name="padding">5</field>
-            <field name="company_id" eval="False"/>
-        </record>
 </odoo>
