@@ -25,7 +25,7 @@
             <tree>
                 <field name="lc_no"/>
                 <field name="lc_date"/>
-                <!-- <field name="incoterms"/> -->
+                <field name="incoterm"/>
                 <!-- <field name="supplier_name_id"/> -->
                 <field name="shipment_date"/>
                 <field name="arrival_date"/>
@@ -65,6 +65,7 @@
                             <field name="lc_date"/>
                             <field name="lc_no"/>
                             <field name="bank_name_id"/>
+                            <field name="incoterm"/>
                         </group>
                         <group>
                             <!-- <field name="supplier_name_id"/> -->
@@ -72,6 +73,7 @@
                             <field name="arrival_date"/>
                             <field name="branch_lc_sl_no"/>
                             <field name="partner_id"/>
+                            <field name="currency_id" invisible="1"/>
                             <!-- <field name="attachments" widget="many2many_binary"/> -->
                         </group>                                                           
                     </group>
@@ -98,7 +100,8 @@
                                 </group>
                                 <group class="oe_subtotal_footer oe_right">
                                     <!-- <field name="subtotal" widget="account-tax-totals-field" nolabel="1" colspan="2"/> -->
-                                    <field name="subtotal" colspan="2"/>
+                                    <!-- <field name="subtotal" widget="monetary"/> -->
+                                    <field name="subtotal"/>
                                 </group>
                             </group>
                         </page>

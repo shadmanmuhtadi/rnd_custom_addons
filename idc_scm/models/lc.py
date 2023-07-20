@@ -4,17 +4,22 @@ class lc(models.Model):
 
     _name = "scm.lc"
     # _inherit = ['mail.thread','ir.attachment']
-    _inherit = ['mail.thread']
+    _inherit = ['portal.mixin', 'mail.thread', 'mail.activity.mixin']
 
     _description = "LC"
     _rec_name = 'lc_no'
    
     lc_date = fields.Datetime(string="LC Date",tracking=True, default=fields.Datetime.now)
-    subtotal = fields.Float(readonly='1', compute='_compute_subtotal',string='Subtotal')
+    subtotal = fields.Monetary(string='Subtotal',readonly='1', compute='_compute_subtotal')
     notes = fields.Html('Terms and Conditions')
     lc_no = fields.Char(string='LC No')
     partner_id = fields.Many2one('res.partner', string='Principle', store=True)
     bank_name_id = fields.Many2one('scm.bank', string="Bank Name")
+    incoterm = fields.Many2one(
+        'account.incoterms', 'Incoterm',
+        help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
+
+    currency_id  = fields.Many2one('res.currency', related='partner_id.currency_id')
 
     shipment_date = fields.Datetime(string="Approx. Shipment Date", tracking=True)
     arrival_date = fields.Datetime(string="Approx. Arrival Date", tracking=True)

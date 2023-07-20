@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_shipment_form_inherit" model="ir.ui.view">
+        <field name="name">view.shipment.form.inherit</field>
+        <field name="model">purchase.order.shipment</field>
+        <field name="inherit_id" ref="shipment_management_bs.purchase_order_shipment_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='purchase_id']" position="after">
+                <field name="net_weight"/>
+                <field name="gross_weight"/> 
+                <field name="cbm"/>
+                <field name="bl_no"/>              
+            </xpath>
+            <xpath expr="//field[@name='forwarder_no']" position="after">
+                <field name="container_qty"/>
+                <field name="lc_no"/>
+                <field name="invoice_no"/> 
+                <field name="invoice_date"/>                
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

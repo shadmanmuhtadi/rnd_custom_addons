@@ -19,8 +19,10 @@
         'views/product_view.xml',
         'views/purchase_view.xml', 
         'views/master_view.xml',
+        'views/shipment_view.xml',
     ],
     'installable': True,
     'auto_install': False,
     'application': True,
 }
+

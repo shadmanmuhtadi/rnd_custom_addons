@@ -2,7 +2,6 @@
 <odoo>
 
 
-
 <menuitem
         id="menu_scm_master_data_inherit"
         name="Master Data"
@@ -10,9 +9,38 @@
         sequence="8"/>
 
     <menuitem
-        id="menu_hr_job_role_inherit"
+        id="menu_purchase_product_categories_inherit"
         name="Product Categories"
         action="product.product_category_action_form"
         parent="menu_scm_master_data_inherit"
         sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_product_inherit"
+        name="Products"
+        action="purchase.product_normal_action_puchased"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_principles_inherit"
+        name="Principles"
+        action="account.res_partner_action_supplier"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_vendor_pricelist_inherit"
+        name="Vendor Pricelists"
+        action="product.product_supplierinfo_type_action"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_purchase_unitofmeasure_inherit"
+        name="Units of Measure Categories"
+        action="uom.product_uom_categ_form_action"
+        parent="menu_scm_master_data_inherit"
+        sequence="1"/>
+
 </odoo>

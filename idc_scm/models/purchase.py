@@ -21,8 +21,6 @@ class PurchaseOrder(models.Model):
         'account.incoterms', 'Incoterm',
         help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
 
-
-
     def action_in_lc(self):
         for rec in self:
             rec.state = 'lc_confirm'
