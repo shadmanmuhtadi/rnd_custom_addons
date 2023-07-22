@@ -150,6 +150,37 @@ class PurhcasePoline(models.Model):
 
 
     order_id = fields.Many2one('purchase.po', string='Order Reference', index=True, required=True, ondelete='cascade')
+    moq = fields.Float(
+        'MOQ', default=0.0, required=True, digits="Product Unit Of Measure",
+        help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise.")
+
+    @api.onchange('product_id')
+    def onchange_product_id(self):
+        super(PurhcasePoline, self).onchange_product_id()
+        if not self.product_id:
+            return
+
+        # Reset date, price and quantity since _onchange_quantity will provide default values
+        self.moq = 0.0
+
+        self._suggest_quantity()
+
+
+    def _suggest_quantity(self):
+        '''
+        Suggest a minimal quantity based on the seller
+        '''
+        super(PurhcasePoline, self)._suggest_quantity()
+
+        if not self.product_id:
+            return
+        seller_moq = self.product_id.seller_ids\
+            .filtered(lambda r: r.name == self.order_id.partner_id and (not r.product_id or r.product_id == self.product_id))\
+            .sorted(key=lambda r: r.moq)
+        if seller_moq:
+            self.moq = seller_moq[0].moq or 1.0
+        else:
+            self.moq = 1.0
 
 
 class Port(models.Model):
