@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Form view inherit -->
+    <record id="view_product_template_form_inherit" model="ir.ui.view">
+        <field name="name">view.product.template.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="string">Product Code</attribute>
+            </xpath>
+            <xpath expr="//field[@name='categ_id']" position="attributes">
+                <attribute name="string">Sub Category</attribute>
+            </xpath>
+            <xpath expr="//field[@name='categ_id']" position="before">
+                <field name="sub_business"/>
+                <field name="brand"/>
+                <field name="category"/>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="master_code"/>
+            </xpath>
+            <xpath expr="//field[@name='uom_id']" position="before">
+                <field name="country_id"/>
+            </xpath>
+            <xpath expr="//field[@name='uom_po_id']" position="after">
+                <field name="regulatory_issue"/>
+                <field name="bsti_no" attrs="{'invisible':[('regulatory_issue','=', 'bcsir')]}"/>
+                <field name="incoterm"/>
+            </xpath>
+            <xpath expr="//field[@name='barcode']" position="after">
+                <field name="tti"/>
+            </xpath>
+        </field>
+        
+    </record>
+
+    <!-- view_product_cost_inherit -->
+    <record id="view_product_cost_inherit" model="ir.ui.view">
+        <field name="name">product.cost.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='standard_price']" position="attributes">
+                <attribute name="string">Pre Costing</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- view_product_purchase_quantity_tree_inherit -->
+    <record id="view_product_supplier_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.tree.view3</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Principle</attribute>
+            </xpath>
+            <xpath expr="//field[@name='min_qty']" position="attributes">
+                <attribute name="string">MOP</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- view_product_purchase_quantity_form_inherit -->
+    <record id="view_product_supplier_form_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.tree.view4</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Principle</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_name']" position="attributes">
+                <attribute name="string">Principle Product Name</attribute>
+            </xpath>
+            <xpath expr="//field[@name='product_code']" position="attributes">
+                <attribute name="string">Principle Product Code</attribute>
+            </xpath>
+            <xpath expr="//label[@for='min_qty']" position="attributes">
+                <attribute name="string">MOP</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- view_hscode_inherit -->
+    <record id="view_product_hscode_inherit" model="ir.ui.view">
+        <field name="name">product.hscode.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="delivery.product_template_hs_code"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='hs_code']" position="replace">
+                <field name="hs_code_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- Tree view inherit -->
+    <record id="view_product_template_tree_inherit" model="ir.ui.view">
+        <field name="name">view.product.template.tree.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_code']" position="attributes">
+                <attribute name="string">Product Code</attribute>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="sub_business"/>
+                <field name="brand"/>
+                <field name="category"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

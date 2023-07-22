@@ -27,6 +27,9 @@ class PurhcasePo(models.Model):
     ], string='Order Type', index=True, copy=False, default='import', tracking=True, required=True)
     
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    discharge_port_id = fields.Many2one('scm.port',string="Discharge Port")
+    ship_from_id = fields.Many2one('scm.ship',string="Ship From")
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('to approve', 'To Approve'),
@@ -149,3 +152,14 @@ class PurhcasePoline(models.Model):
     order_id = fields.Many2one('purchase.po', string='Order Reference', index=True, required=True, ondelete='cascade')
 
 
+class Port(models.Model):
+    _name = "scm.port"
+    _rec_name = 'discharge_port'
+
+    discharge_port = fields.Char(string="Discharge Port")
+
+class Ship(models.Model):
+    _name = "scm.ship"
+    _rec_name = 'ship_from'
+
+    ship_from = fields.Char(string="Ship From")

@@ -5,3 +5,6 @@ access_purchase_order_line,purchase.po.order.line.,idc_scm_pi.model_purchase_po_
 
 access_purchase_order_pi,purchase.order.pi,idc_scm_pi.model_purchase_pi,purchase.group_purchase_user,1,1,1,1
 access_purchase_order_pi_line,purchase.order.pi.line,idc_scm_pi.model_purchase_pi_line,purchase.group_purchase_user,1,1,1,1
+access_scm_port,access_scm_port,idc_scm_pi.model_scm_port,base.group_user,1,1,1,1
+access_scm_ship,access_scm_ship,idc_scm_pi.model_scm_ship,base.group_user,1,1,1,1
+access_scm_hscode,access_scm_hscode,idc_scm_pi.model_scm_hscode,base.group_user,1,1,1,1
