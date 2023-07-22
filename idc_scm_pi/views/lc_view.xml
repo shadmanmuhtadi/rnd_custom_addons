@@ -8,10 +8,6 @@
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="pi_ids" widget="many2many_tags"/>
                     <!-- <button name="populate_order_line" type="object" string="Populate Order line" class="oe_highlight" groups="purchase.group_purchase_manager" data-hotkey="z"/> -->
-
-                    <!-- <field name="pi_ids"/> -->
-                    <!-- <field name="pi_ids" widget="one2many"/> -->
-
                 </xpath>
             </field>
         </record>

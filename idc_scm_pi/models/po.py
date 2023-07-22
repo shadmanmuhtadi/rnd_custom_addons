@@ -17,12 +17,14 @@ class PurhcasePo(models.Model):
         'done': [('readonly', True)],
         'cancel': [('readonly', True)],
     }
+    custom_po_ref = fields.Char(string="Custom PO Ref", readonly=True)
+
     order_type = fields.Selection([
         ('import', 'Import'),
         ('local', 'Local'),
         ('third_party', 'Third Party'),
         ('others', 'Others'),
-    ], string='Order Type', index=True, copy=False, default='import', tracking=True)
+    ], string='Order Type', index=True, copy=False, default='import', tracking=True, required=True)
     
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
     state = fields.Selection([
@@ -111,41 +113,32 @@ class PurhcasePo(models.Model):
         if partner_vals:
             res.sudo().write(partner_vals)  # Because the purchase user doesn't have write on `res.partner`
         return res
-#---------------------------------
-class CompanyName(models.Model):
+    
 
-    _name = 'companyname'
-    _rec_name = 'company_name'
-
-    company_name = fields.Char(string="Company Name", required=True)
-    company_short_code = fields.Char(string="Company short code")
-
-class FormDownload(models.Model):
-
-    _name = 'formdownload'
-
-    name = fields.Many2one('companyname', string="Company Name", ondelete='cascade',
-                                      required=True)
-    form_serial_no = fields.Char(string="Form Serial No", readonly=True)
-    status = fields.Boolean(string="Status", default=False)
-    order_type = fields.Selection([
-        ('import', 'Import'),
-        ('local', 'Local'),
-        ('third_party', 'Third Party'),
-        ('others', 'Others'),
-    ], string='Order Type', index=True, copy=False, default='import', tracking=True)
-
+    #po custom ref generator
     @api.model
     def create(self, vals):
-        serial_no = self.env['ir.sequence'].get('formdownload.form_serial_no')
-        compnay_code = str(vals.get(self.env['companyname'].browse(vals['name']).company_short_code,False))
+        serial_no = self.env['ir.sequence'].get('purchase.po.customized.sequence')
+        compnay_code = str(vals.get(self.env['res.partner'].browse(vals['partner_id']).vendor_code,False))
         order_type = vals.get('order_type', False)
         current_year = str(datetime.datetime.now().year)
-        # merge code and serial number
-        vals['form_serial_no'] = order_type +'/'+ compnay_code +'/'+current_year+'/'+ serial_no
+        # merge prefix and serial number
+        vals['custom_po_ref'] = order_type + '/' + compnay_code + '/' + current_year + '/' + serial_no
 
-        return super(FormDownload, self).create(vals)
+        return super(PurhcasePo, self).create(vals)
+    
+    @api.depends('order_line.date_planned')
+    def _compute_date_planned(self):
+        """ date_planned = the earliest date_planned across all order lines. """
+        for order in self:
+            dates_list = order.order_line.filtered(lambda x: not x.display_type and x.date_planned).mapped('date_planned')
+            if dates_list:
+                order.date_planned = fields.Datetime.to_string(min(dates_list))
+            else:
+                order.date_planned = False
+
 #---------------------------------
+
 
 class PurhcasePoline(models.Model):
     _name = "purchase.po.line"

@@ -27,7 +27,9 @@ class PurhcasePi(models.Model):
     ], string='Status', readonly=True, index=True, copy=False, default='draft', tracking=True)
     partner_id = fields.Many2one('res.partner', related='po_id.partner_id', string='Vendor', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
     date_order = fields.Datetime('Order Date', related='po_id.date_order', required=True, states=READONLY_STATES, index=True, copy=False)
-
+    date_planned = fields.Datetime(
+        string='Receipt Date', index=True, related='po_id.date_planned', copy=False, compute='_compute_date_planned', store=True, readonly=False,
+        help="Delivery date promised by vendor. This date is used to determine expected arrival of products.")
     order_line = fields.One2many('purchase.pi.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)
     po_id = fields.Many2one('purchase.po', string='Purchase Order')
 
