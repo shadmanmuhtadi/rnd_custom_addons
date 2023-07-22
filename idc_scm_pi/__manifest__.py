@@ -17,6 +17,7 @@
         'views/po_view.xml',
         'views/pi_view.xml',
         'views/lc_view.xml',
+        'views/sequence.xml',
     ],
     'application': True,
     'installable': True,

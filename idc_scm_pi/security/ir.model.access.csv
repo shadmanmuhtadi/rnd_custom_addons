@@ -5,3 +5,6 @@ access_purchase_order_line,purchase.po.order.line.,idc_scm_pi.model_purchase_po_
 
 access_purchase_order_pi,purchase.order.pi,idc_scm_pi.model_purchase_pi,purchase.group_purchase_user,1,1,1,1
 access_purchase_order_pi_line,purchase.order.pi.line,idc_scm_pi.model_purchase_pi_line,purchase.group_purchase_user,1,1,1,1
+
+access_compnay,access.compnay,idc_scm_pi.model_companyname,purchase.group_purchase_user,1,1,1,1
+access_formdownload,access.formdownload,idc_scm_pi.model_formdownload,purchase.group_purchase_user,1,1,1,1

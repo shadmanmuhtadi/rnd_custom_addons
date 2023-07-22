@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="compnay_name_form" model="ir.ui.view">
+            <field name="name">compnayname</field>
+            <field name="model">companyname</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="company_name"/>
+                            <field name="company_short_code"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="companyname_tree" model="ir.ui.view">
+            <field name="name">companyname.po.tree</field>
+            <field name="model">companyname</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="company_name"/>
+                    <field name="company_short_code"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="formdownload_form" model="ir.ui.view">
+            <field name="name">formdownload.form</field>
+            <field name="model">formdownload</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="order_type"/>
+                            <field name="form_serial_no"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="formdownload_tree" model="ir.ui.view">
+            <field name="name">formdownload.tree</field>
+            <field name="model">formdownload</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="form_serial_no"/>
+                    <field name="order_type"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="purchase_formdownload_copy_form_action_generic" model="ir.actions.act_window">
+            <field name="name">formdownload</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">formdownload</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No request for Purchase Order found. Let's create one!
+              </p>
+            </field>
+        </record>
+         <record id="purchase_companyname_copy_form_action_generic" model="ir.actions.act_window">
+            <field name="name">companyname</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">companyname</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                No request for Purchase Order found. Let's create one!
+              </p>
+            </field>
+        </record>
+
+
+         <menuitem 
+            action="purchase_formdownload_copy_form_action_generic"
+            name="formdownload"
+            id="menu_formdownload_po"
+            parent="purchase.menu_procurement_management"
+            sequence="-4" />
+        <menuitem 
+            action="purchase_companyname_copy_form_action_generic"
+            name="companyname"
+            id="menu_companyname_po"
+            parent="purchase.menu_procurement_management"
+            sequence="-5" />
+
+
+</odoo>

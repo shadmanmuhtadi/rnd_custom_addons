@@ -2,6 +2,7 @@
 
 from odoo import api, fields, exceptions, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
+import datetime
 import logging
 logger = logging.getLogger("Your Message")
 
@@ -110,6 +111,41 @@ class PurhcasePo(models.Model):
         if partner_vals:
             res.sudo().write(partner_vals)  # Because the purchase user doesn't have write on `res.partner`
         return res
+#---------------------------------
+class CompanyName(models.Model):
+
+    _name = 'companyname'
+    _rec_name = 'company_name'
+
+    company_name = fields.Char(string="Company Name", required=True)
+    company_short_code = fields.Char(string="Company short code")
+
+class FormDownload(models.Model):
+
+    _name = 'formdownload'
+
+    name = fields.Many2one('companyname', string="Company Name", ondelete='cascade',
+                                      required=True)
+    form_serial_no = fields.Char(string="Form Serial No", readonly=True)
+    status = fields.Boolean(string="Status", default=False)
+    order_type = fields.Selection([
+        ('import', 'Import'),
+        ('local', 'Local'),
+        ('third_party', 'Third Party'),
+        ('others', 'Others'),
+    ], string='Order Type', index=True, copy=False, default='import', tracking=True)
+
+    @api.model
+    def create(self, vals):
+        serial_no = self.env['ir.sequence'].get('formdownload.form_serial_no')
+        compnay_code = str(vals.get(self.env['companyname'].browse(vals['name']).company_short_code,False))
+        order_type = vals.get('order_type', False)
+        current_year = str(datetime.datetime.now().year)
+        # merge code and serial number
+        vals['form_serial_no'] = order_type +'/'+ compnay_code + '/'+current_year+ '/'+ serial_no
+
+        return super(FormDownload, self).create(vals)
+#---------------------------------
 
 class PurhcasePoline(models.Model):
     _name = "purchase.po.line"
