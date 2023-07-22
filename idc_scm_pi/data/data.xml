@@ -19,12 +19,6 @@
             <field name="company_id" eval="False"/>
         </record>
 
-        <!-- Sequence for form download serial number -->
-        <!-- <record id="ref_code_form_serial_no" model="ir.sequence.type">
-          <field name="name">Sequence for form download serial number</field>
-          <field name="code">formdownload.form_serial_no</field>
-        </record> -->
-
         <record id="seq_form_serial_no" model="ir.sequence">
           <field name="name">Sequence for form download serial number</field>
           <field name="code">formdownload.form_serial_no</field>
