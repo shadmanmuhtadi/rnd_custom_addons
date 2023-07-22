@@ -79,7 +79,7 @@
         name="HS Code"
         action="action_scm_hs_code"
         parent="idc_scm.menu_scm_master_data_inherit"
-        sequence="1"
+        sequence="22"
     />
 
 </odoo>

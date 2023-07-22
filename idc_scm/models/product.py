@@ -1,7 +1,7 @@
 from odoo import api, fields, models
 
 class ProductTemplate(models.Model):
-
+    
     _inherit = ['product.template']
 
 
@@ -30,4 +30,15 @@ class ProductCategory(models.Model):
     sub_business = fields.Many2one('product.category', string='Sub Business', help='For example: Modelez')
     brand = fields.Many2one('product.category', string='Brand',help='For example: Tang, cadbury')
     category = fields.Many2one('product.category', string='Category',help='For example: Silk')
+
+
+class ProductSupplierInFo(models.Model):
+
+    _inherit = ['product.supplierinfo']
+
+    moq = fields.Float(
+        'MOQ', default=0.0, required=True, digits="Product Unit Of Measure",
+        help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise.")
+
+    
     
