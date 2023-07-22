@@ -142,7 +142,7 @@ class FormDownload(models.Model):
         order_type = vals.get('order_type', False)
         current_year = str(datetime.datetime.now().year)
         # merge code and serial number
-        vals['form_serial_no'] = order_type +'/'+ compnay_code + '/'+current_year+ '/'+ serial_no
+        vals['form_serial_no'] = order_type +'/'+ compnay_code +'/'+current_year+'/'+ serial_no
 
         return super(FormDownload, self).create(vals)
 #---------------------------------
