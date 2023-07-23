@@ -23,6 +23,12 @@ class PurhcasePo(models.Model):
         ('3P', 'Third Party'),
         ('OT', 'Others'),
     ], string='Order Type', index=True, copy=False, default='import', tracking=True, required=True)
+    ship_mode = fields.Selection([
+        ('sea', 'Sea'),
+        ('air', 'Air'),
+        ('road', 'Road')], 
+        default='sea',
+        string="Ship Mode")
     
     partner_ref = fields.Char('Supplier Reference', copy=False,
         help="Reference of the sales order or bid sent by the vendor. "
