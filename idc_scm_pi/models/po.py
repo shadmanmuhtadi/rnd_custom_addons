@@ -1,5 +1,3 @@
-
-
 from odoo import api, fields, exceptions, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
 import datetime
@@ -26,6 +24,16 @@ class PurhcasePo(models.Model):
         ('OT', 'Others'),
     ], string='Order Type', index=True, copy=False, default='import', tracking=True, required=True)
     
+    partner_ref = fields.Char('Supplier Reference', copy=False,
+        help="Reference of the sales order or bid sent by the vendor. "
+             "It's used to do the matching when you receive the "
+             "products as this reference is usually written on the "
+             "delivery order sent by your vendor.")
+    
+    order_date = fields.Date('Order Date', default=fields.Date.today())
+    approx_shipment_date = fields.Date('Approx. Shipment Date', default=fields.Date.today())
+    approx_arrival_month = fields.Date('Approx. Arrival Month', default=fields.Date.today())
+
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
     discharge_port_id = fields.Many2one('scm.port',string="Discharge Port")
     ship_from_id = fields.Many2one('scm.ship',string="Ship From")
@@ -161,6 +169,7 @@ class PurhcasePoline(models.Model):
         'MOQ', default=0.0, required=True, digits="Product Unit Of Measure",
         help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise.")
     product_qty = fields.Float(string='Qunatity In Pack', digits='Product Unit of Measure', required=True)
+    price_unit = fields.Float(string='Pack Price', required=True, digits='Product Price')
 
     @api.onchange('product_id')
     def onchange_product_id(self):
