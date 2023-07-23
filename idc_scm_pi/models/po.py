@@ -1,5 +1,5 @@
 from odoo import api, fields, exceptions, models, SUPERUSER_ID, _
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
 import datetime
 import logging
 logger = logging.getLogger("Your Message")
@@ -15,7 +15,7 @@ class PurhcasePo(models.Model):
         'done': [('readonly', True)],
         'cancel': [('readonly', True)],
     }
-    custom_po_ref = fields.Char(string="Purchase Order No", readonly=True)
+    custom_po_ref = fields.Char(string="Purchase Order No", readonly=True, index=True, default='New')
 
     order_type = fields.Selection([
         ('IMP', 'Import'),
@@ -41,6 +41,7 @@ class PurhcasePo(models.Model):
     approx_arrival_month = fields.Date('Approx. Arrival Month', default=fields.Date.today())
 
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    vendor_code = fields.Char(related='partner_id.vendor_code', string='vendor code',store=True)
     discharge_port_id = fields.Many2one('scm.port',string="Discharge Port")
     ship_from_id = fields.Many2one('scm.ship',string="Ship From")
 
@@ -136,19 +137,10 @@ class PurhcasePo(models.Model):
     @api.model
     def create(self, vals):
         serial_no = self.env['ir.sequence'].get('purchase.po.customized.sequence')
-        # if vals.get('company_id', False):
-        #     raise UserError(_('Supplier code is empty! Please set the set the Supplier short code to generate Purchase Order No'))
-        # company_code = str(vals.get(self.env['res.partner'].browse(vals['partner_id']).vendor_code))
-        company_code = str(vals.get(self.partner_id.vendor_code))
-        logger.error(f"company vendor code is {company_code}")
-
-        order_type = vals.get('order_type', False)
-        current_year = str(datetime.datetime.now().year)
-        current_month = str(datetime.datetime.now().month)
-
-        # merge prefix and serial number
-        vals['custom_po_ref'] = order_type + '/' + company_code + '/' + current_year + '/'+ current_month + '/' + serial_no
-
+        supplier_code = self.env['res.partner'].browse(vals['partner_id']).vendor_code
+        if supplier_code is False:
+            raise UserError("Supplier short code is not available!!")
+        vals['custom_po_ref'] = vals.get('order_type') + '/' + supplier_code + '/' + str(datetime.datetime.now().year) + '/'+ str(datetime.datetime.now().month) + '/' + serial_no
         return super(PurhcasePo, self).create(vals)
     
     @api.depends('order_line.date_planned')
