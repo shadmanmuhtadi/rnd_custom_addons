@@ -20,10 +20,10 @@ class PurhcasePo(models.Model):
     custom_po_ref = fields.Char(string="Purchase Order No", readonly=True)
 
     order_type = fields.Selection([
-        ('import', 'Import'),
-        ('local', 'Local'),
-        ('third_party', 'Third Party'),
-        ('others', 'Others'),
+        ('IMP', 'Import'),
+        ('LP', 'Local'),
+        ('3P', 'Third Party'),
+        ('OT', 'Others'),
     ], string='Order Type', index=True, copy=False, default='import', tracking=True, required=True)
     
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
@@ -122,11 +122,18 @@ class PurhcasePo(models.Model):
     @api.model
     def create(self, vals):
         serial_no = self.env['ir.sequence'].get('purchase.po.customized.sequence')
-        compnay_code = str(vals.get(self.env['res.partner'].browse(vals['partner_id']).vendor_code,False))
+        # if vals.get('company_id', False):
+        #     raise UserError(_('Supplier code is empty! Please set the set the Supplier short code to generate Purchase Order No'))
+        # company_code = str(vals.get(self.env['res.partner'].browse(vals['partner_id']).vendor_code))
+        company_code = str(vals.get(self.partner_id.vendor_code))
+        logger.error(f"company vendor code is {company_code}")
+
         order_type = vals.get('order_type', False)
         current_year = str(datetime.datetime.now().year)
+        current_month = str(datetime.datetime.now().month)
+
         # merge prefix and serial number
-        vals['custom_po_ref'] = order_type + '/' + compnay_code + '/' + current_year + '/' + serial_no
+        vals['custom_po_ref'] = order_type + '/' + company_code + '/' + current_year + '/'+ current_month + '/' + serial_no
 
         return super(PurhcasePo, self).create(vals)
     
