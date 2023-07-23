@@ -24,12 +24,23 @@ class PurhcasePo(models.Model):
         ('others', 'Others'),
     ], string='PO Type', index=True, copy=False, default='import', tracking=True, required=True)
 
+    ship_mode = fields.Selection([
+        ('sea', 'Sea'),
+        ('air', 'Air'),
+        ('road', 'Road')], 
+        default='sea',
+        string="Ship Mode")
+    
+    partner_ref = fields.Char('Supplier Reference', copy=False,
+        help="Reference of the sales order or bid sent by the vendor. "
+             "It's used to do the matching when you receive the "
+             "products as this reference is usually written on the "
+             "delivery order sent by your vendor.")
+    
     order_date = fields.Date('Order Date', default=fields.Date.today())
     approx_shipment_date = fields.Date('Approx. Shipment Date', default=fields.Date.today())
-    incoterm = fields.Many2one(
-        'account.incoterms', 'Incoterm',
-        help="International Commercial Terms are a series of predefined commercial terms used in international transactions.")
-    
+    approx_arrival_month = fields.Date('Approx. Arrival Month', default=fields.Date.today())
+
     partner_id = fields.Many2one('res.partner', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
     discharge_port_id = fields.Many2one('scm.port',string="Discharge Port")
     ship_from_id = fields.Many2one('scm.ship',string="Ship From")
