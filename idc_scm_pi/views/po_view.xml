@@ -43,7 +43,6 @@
                             <field name="partner_id" widget="res_partner_many2one" context="{'res_partner_search_mode': 'supplier', 'show_vat': True}"
                                 placeholder="Name, TIN, Email, or Reference"
                             />
-                            <field name="custom_po_ref" readonly="1"/>
                             <field name="incoterm_id"/>
                             <field name="partner_ref"/>
                             <field name="currency_id" groups="base.group_multi_currency" force_save="1"/>
@@ -276,8 +275,8 @@
                       decoration-muted="state=='cancel'" sample="1">
                     <field name="priority" optional="show" widget="priority" nolabel="1"/>
                     <field name="partner_ref" optional="hide"/>
+                    <field name="custom_po_ref" readonly="1" decoration-info="state in ('draft','sent','purchase','done')"/>
                     <field name="name" string="PO Ref" readonly="1" decoration-info="state in ('draft','sent')"/>
-                    <field name="custom_po_ref"/>
                     <field name="date_order" string="Order Date" invisible="not context.get('quotation_only', False)" optional="show"/>
                     <field name="date_approve" invisible="context.get('quotation_only', False)" optional="show"/>
                     <field name="partner_id" string="Supplier" readonly="1"/>

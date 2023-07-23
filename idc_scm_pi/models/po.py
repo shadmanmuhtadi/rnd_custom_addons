@@ -17,7 +17,7 @@ class PurhcasePo(models.Model):
         'done': [('readonly', True)],
         'cancel': [('readonly', True)],
     }
-    custom_po_ref = fields.Char(string="Custom PO Ref", readonly=True)
+    custom_po_ref = fields.Char(string="Purchase Order No", readonly=True)
 
     order_type = fields.Selection([
         ('import', 'Import'),
@@ -153,6 +153,7 @@ class PurhcasePoline(models.Model):
     moq = fields.Float(
         'MOQ', default=0.0, required=True, digits="Product Unit Of Measure",
         help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise.")
+    product_qty = fields.Float(string='Qunatity In Pack', digits='Product Unit of Measure', required=True)
 
     @api.onchange('product_id')
     def onchange_product_id(self):
