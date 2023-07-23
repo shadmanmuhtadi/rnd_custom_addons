@@ -169,6 +169,7 @@ class PurhcasePoline(models.Model):
         'MOQ', default=0.0, required=True, digits="Product Unit Of Measure",
         help="The quantity to purchase from this vendor to benefit from the price, expressed in the vendor Product Unit of Measure if not any, in the default unit of measure of the product otherwise.")
     product_qty = fields.Float(string='Qunatity In Pack', digits='Product Unit of Measure', required=True)
+    price_unit = fields.Float(string='Pack Price', required=True, digits='Product Price')
 
     @api.onchange('product_id')
     def onchange_product_id(self):
