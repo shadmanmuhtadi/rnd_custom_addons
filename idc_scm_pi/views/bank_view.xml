@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--tree view for the menu item-->
+    <record id="view_scm_bank_tree" model="ir.ui.view">
+        <field name="name">scm.bank.tree</field>
+        <field name="model">scm.bank</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="bank_name"/>
+                <field name="swift_code" />
+            </tree>
+        </field>
+    </record>
+
+
+
+<!--form view for the menu item-->
+    <record id="view_scm_bank_form" model="ir.ui.view">
+        <field name="name">scm.bank.form</field>
+        <field name="model">scm.bank</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="bank_name"/>
+                        <field name="swift_code" />                                              
+                    </group>
+
+                </sheet>
+                <!-- Chatter -->
+                <!-- <div class="oe_chatter">
+                    <field name="message_follower_ids" groups="base.group_user"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div> -->
+            </form>
+        </field>
+    </record>
+
+<!--action for the child menu item-->
+    <record id="action_scm_bank" model="ir.actions.act_window">
+        <field name="name">Banks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">scm.bank</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first Bank!
+            </p>
+        </field>
+    </record>
+
+<!-- Bank menu on (purchase/product) -->
+    <menuitem
+        id="menu_bank"
+        name="Banks"
+        action="action_scm_bank"
+        parent="idc_scm_pi.menu_scm_master_data_inherit"
+        sequence="23"
+    />
+
+</odoo>

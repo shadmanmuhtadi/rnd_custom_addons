@@ -21,6 +21,7 @@
         'views/partner_view.xml',
         'views/product_view.xml',
         'views/hscode_view.xml',
+        'views/bank_view.xml',
     ],
     'application': True,
     'installable': True,
