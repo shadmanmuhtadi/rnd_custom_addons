@@ -59,15 +59,22 @@
             <xpath expr="//field[@name='min_qty']" position="attributes">
                 <attribute name="string">MOP</attribute>
             </xpath>
+            <xpath expr="//field[@name='price']" position="attributes">
+                <attribute name="string">Pack Price</attribute>
+            </xpath>
+            <xpath expr="//field[@name='min_qty']" position="before">
+                <field name="moq"/>
+            </xpath>
         </field>
     </record>
 
-    <!-- view_product_purchase_quantity_form_inherit -->
+    <!-- view_(product===>purchase)_(vendor pricelist)_form_inherit -->
     <record id="view_product_supplier_form_inherit" model="ir.ui.view">
         <field name="name">product.supplierinfo.tree.view4</field>
         <field name="model">product.supplierinfo</field>
         <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
         <field name="arch" type="xml">
+        <!-- renaming fields -->
             <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="string">Principle</attribute>
             </xpath>
@@ -79,6 +86,13 @@
             </xpath>
             <xpath expr="//label[@for='min_qty']" position="attributes">
                 <attribute name="string">MOP</attribute>
+            </xpath>
+            <xpath expr="//label[@for='price']" position="attributes">
+                <attribute name="string">Pack Price</attribute>
+            </xpath>
+        <!-- add custom fields -->
+            <xpath expr="//label[@for='min_qty']" position="before">
+                <field name="moq"/>
             </xpath>
         </field>
     </record>
