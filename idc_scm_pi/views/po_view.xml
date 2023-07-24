@@ -319,7 +319,7 @@
 
          <menuitem 
             action="purchase_purchase_order_copy_form_action_generic"
-            name="Purchase Order PO"
+            name="Purchase Order"
             id="menu_purchase_po"
             parent="purchase.menu_procurement_management"
             sequence="-4" />
