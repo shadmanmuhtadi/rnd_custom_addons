@@ -7,3 +7,4 @@ from . import lc
 from . import partner
 from . import product
 from . import hs_code
+from . import bank

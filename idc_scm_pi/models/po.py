@@ -9,6 +9,7 @@ class PurhcasePo(models.Model):
     _name = "purchase.po"
     _inherit = ['purchase.order','mail.thread', 'mail.activity.mixin']
     _description = "Purchase PO"
+    _rec_name = 'custom_po_ref'
 
     READONLY_STATES = {
         'purchase': [('readonly', True)],

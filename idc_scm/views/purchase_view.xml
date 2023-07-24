@@ -147,4 +147,7 @@
         <field name="name">Shipment</field>
     </record>
 
+    <!-- <delete model="ir.ui.menu" id="account.res_partner_action_supplier"></delete> -->
+
+
 </odoo>

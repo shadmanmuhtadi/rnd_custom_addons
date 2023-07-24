@@ -24,14 +24,14 @@
 
     <menuitem
         id="menu_purchase_principles_inherit"
-        name="Principles"
+        name="Suppliers"
         action="account.res_partner_action_supplier"
         parent="menu_scm_master_data_inherit"
         sequence="1"/>
 
     <menuitem
         id="menu_purchase_vendor_pricelist_inherit"
-        name="Vendor Pricelists"
+        name="Supplier Pricelists"
         action="product.product_supplierinfo_type_action"
         parent="menu_scm_master_data_inherit"
         sequence="1"/>

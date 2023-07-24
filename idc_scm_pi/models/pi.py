@@ -1,5 +1,3 @@
-
-
 from odoo import api, fields, exceptions, models, SUPERUSER_ID, _
 from odoo.exceptions import UserError
 import logging
@@ -25,15 +23,31 @@ class PurhcasePi(models.Model):
         ('done', 'Done'),
         ('cancel', 'Cancelled')
     ], string='Status', readonly=True, index=True, copy=False, default='draft', tracking=True)
-    partner_id = fields.Many2one('res.partner', related='po_id.partner_id', string='Vendor', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
+    partner_id = fields.Many2one('res.partner', related='po_id.partner_id', string='Supplier', required=True, states=READONLY_STATES, change_default=True, tracking=True, domain="['|', ('company_id', '=', False), ('company_id', '=', company_id)]", help="You can find a vendor by its Name, TIN, Email or Internal Reference.")
     date_order = fields.Datetime('Order Date', related='po_id.date_order', required=True, states=READONLY_STATES, index=True, copy=False)
     date_planned = fields.Datetime(
         string='Receipt Date', index=True, related='po_id.date_planned', copy=False, compute='_compute_date_planned', store=True, readonly=False,
         help="Delivery date promised by vendor. This date is used to determine expected arrival of products.")
     order_line = fields.One2many('purchase.pi.line', 'order_id', string='Order Lines', states={'cancel': [('readonly', True)], 'done': [('readonly', True)]}, copy=True)
-    po_id = fields.Many2one('purchase.po', string='Purchase Order')
+    po_id = fields.Many2one('purchase.po', string='Purchase Order No')
 
     lc_id = fields.Many2one('purchase.order', string='LC')
+
+    pi_no = fields.Char('Proforma Invoice')
+    pi_order_date = fields.Date('Proforma Invoice Date', default=fields.Date.today())
+    approx_shipment_date = fields.Date(related='po_id.approx_shipment_date')
+    approx_arrival_month = fields.Date(related='po_id.approx_arrival_month')
+    ship_from = fields.Many2one(related='po_id.ship_from_id')
+    discharge_port = fields.Many2one(related='po_id.discharge_port_id')
+    incoterm = fields.Many2one(related='po_id.incoterm_id')
+    currency = fields.Many2one(related='po_id.currency_id')
+    importer = fields.Selection([
+        ('idc', 'IDC'),
+        ('bnb', 'B&B')
+    ], tracking=True)
+
+    bank_id = fields.Many2one('scm.bank', string="Supplier Bank Name")
+    swift_code = fields.Char(related='bank_id.swift_code')
 
     def button_confirm(self):
         for rec in self:
