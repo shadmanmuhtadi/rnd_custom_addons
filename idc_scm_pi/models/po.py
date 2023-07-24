@@ -77,6 +77,10 @@ class PurhcasePo(models.Model):
     def _create_pi_lines_context(self, pi_ids):
         lines = []
         for line in self.order_line:
+            pi_line_qty = pi_ids.filtered(lambda l: l.state in ['draft']).mapped(
+                'order_line').filtered(lambda r: r.product_id.id == line.product_id.id).mapped('product_qty')
+            residual_qty = line.product_qty - \
+                line.product_qty - sum(pi_line_qty)
             if line.product_qty > 0:
                 lines.append((
                     0, 0, {
@@ -86,6 +90,7 @@ class PurhcasePo(models.Model):
                         'price_unit':line.price_unit,
                         'price_subtotal':line.price_subtotal,
                         'qty_ordered': line.product_qty, #sending the quantity in order quantity, in product_qty user will put the approved quantity, which will go to lc lines
+                        'remaining_qty': residual_qty
                     }
                 ))
             else:

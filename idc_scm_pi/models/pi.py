@@ -112,5 +112,4 @@ class PurhcasePiline(models.Model):
     order_id = fields.Many2one('purchase.pi', string='Order Reference', index=True, required=True, ondelete='cascade')
     product_qty = fields.Float(string='Quantity Approved', digits='Product Unit of Measure', required=True)
     qty_ordered = fields.Float(string='Ordered Quantity')
-
-
+    remaining_qty = fields.Float(string='Remaining Qty',readonly=True)
