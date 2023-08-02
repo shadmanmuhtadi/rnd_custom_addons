@@ -29,7 +29,7 @@
         'hr_contract',
         'hr_employee_updation',
         'oh_employee_documents_expiry',
-        # 'hr_payroll_community',
+        'hr_payroll_community',
         'hr_org_chart_overview',
         'idc_bi',
         'idc_offtake',

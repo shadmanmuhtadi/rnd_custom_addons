@@ -2,79 +2,210 @@
 <odoo>
 
 
-<!--Bi Report Form View -->
-    <record id="view_bi_report_form" model="ir.ui.view">
-        <field name="name">bi.report.form</field>
-        <field name="model">bi.report</field>
-        <field name="arch" type="xml">
-            <form>
-            <!-- IDC Year By Year Sales Analysis Report For All Brand -->
-            <sheet groups="IDC_BI_Management.group_bi_md">
-                <form string="Embedded Webpage" version="7.0" edit="false" create="false"> 
-                    <div>         
-                        <iframe title="IDC Year By Year Sales Analysis Report For All Brand" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiM2JhZWE4OTItNjAxNy00MzA3LWFkNjEtMGNlNTZmYmVkZjRkIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+<!--Bi MT Form View -->
+<record id="view_bi_mt_form" model="ir.ui.view">
+    <field name="name">bi.mt.form.view</field>
+    <field name="model">bi.mt</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px;">
+                    <div style="padding-right: 3%;">         
+                        <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="MT Offtake &amp; Target Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiZTA2MzkxMWMtYmY2MS00NWM0LTg2ZDItN2QwYmVmZWRiYWY1IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                        <h4 style="text-align: center; padding-top: 10px; font-family: 'Roboto Condensed'">MT Offtake &amp; Target Analysis</h4>
+                    </div>
+                </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi ECOM Form View -->
+<record id="view_bi_ecom_form" model="ir.ui.view">
+    <field name="name">bi.ecom.form.view</field>
+    <field name="model">bi.ecom</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                
+                <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                    <div style="padding-right: 3%;">         
+                        <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="Ecom Offtake &amp; Target Analysis" src="https://app.powerbi.com/view?r=eyJrIjoiNmNjMzdlYWEtMzY2NS00OWNmLTg2YmMtNGMyOGNiNDNiNjNkIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                        <h4 style="text-align: center; padding-top: 10px;">ECOM Offtake &amp; Target Analysis</h4>
+                    </div>
+                </div>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi PMB Form View -->
+<record id="view_bi_pmb_form" model="ir.ui.view">
+    <field name="name">bi.pmb.form.view</field>
+    <field name="model">bi.pmb</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="PMB" src="https://app.powerbi.com/view?r=eyJrIjoiMTYwYzE3NjAtZWNjZi00YTNmLTgyYmUtNmUzZGRiNzRkNGJlIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">PMB Primary Sales 2023</h4>
+                        </div>
                     </div>
                 </form>
             </sheet>
         </form>
-        </field>
-    </record>
+    </field>
+</record>
 
-<!--Bi District Form View -->
-<record id="view_bi_district_form" model="ir.ui.view">
-    <field name="name">bi.district.form</field>
-    <field name="model">bi.district</field>
+<!--Bi Johnson Form View -->
+<record id="view_bi_johnson_form" model="ir.ui.view">
+    <field name="name">bi.johnson.form.view</field>
+    <field name="model">bi.johnson</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="J&amp;J" src="https://app.powerbi.com/view?r=eyJrIjoiZDA0YWM5YTEtMTE4Yi00NTEwLWE2ZjEtZjBmMGRjMWI3ZWNlIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">J&amp;J Primary Sales 2023</h4>
+                        </div>
+                    </div>
+                </form>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Ferrero Form View -->
+<record id="view_bi_ferrero_form" model="ir.ui.view">
+    <field name="name">bi.ferrero.form.view</field>
+    <field name="model">bi.ferrero</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="Ferrero" src="https://app.powerbi.com/view?r=eyJrIjoiZmNkZDU2MzYtNDkyYi00MDVhLWE3NjAtNjIzYTdkYmI5MDg5IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">Ferrero Primary Sales 2023</h4>
+                        </div>
+                    </div>
+                </form>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Kellogg Form View -->
+<record id="view_bi_kellogg_form" model="ir.ui.view">
+    <field name="name">bi.kellogg.form.view</field>
+    <field name="model">bi.kellogg</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="Kellogg's" src="https://app.powerbi.com/view?r=eyJrIjoiZmQ4MDI1ZjMtMWI2MS00YTBlLTkzNGUtZmRlOGY4NTQ0YjAyIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">Kellogg's Primary Sale 2023 </h4>
+                        </div>
+                    </div>
+                </form>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Mondelez Form View -->
+<record id="view_bi_mondelez_form" model="ir.ui.view">
+    <field name="name">bi.mondelez.form.view</field>
+    <field name="model">bi.mondelez</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="Mondelez" src="https://app.powerbi.com/view?r=eyJrIjoiNGY0YTQ2ZDUtNjA1NS00ZGQzLWJjMWUtNGIxNmFjMGI3ZjU4IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">Mondelez Primary Sales 2023</h4>
+                        </div>
+                    </div>
+                </form>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<!--Bi Nivea Form View -->
+<record id="view_bi_nivea_form" model="ir.ui.view">
+    <field name="name">bi.nivea.form.view</field>
+    <field name="model">bi.nivea</field>
     <field name="arch" type="xml">
         <form>
             <!-- ATTRACTIVENESS SCORE REPORT -->
-            <sheet groups="IDC_BI_Management.group_bi_md,IDC_BI_Management.group_bi_sd,IDC_BI_Management.group_bi_gm">
-                <form string="ATTRACTIVENESS SCORE REPORT" version="7.0" edit="false" create="false"> 
-                    <div>         
-                        <iframe title="ATTRACTIVENESS SCORE REPORT" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiNmM5NTJhYmEtZWYyOS00Y2NjLTlhOTUtNjE4ZjMyN2ZjMGU0IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="Nivea" src="https://app.powerbi.com/view?r=eyJrIjoiNTY4ZjEzYzAtZmFiNy00YTY0LTk0MzMtZGFhYWNkYzQzNjNjIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">Nivea Primary Sales 2023 </h4>
+                        </div>
                     </div>
                 </form>
-                </sheet>
+            </sheet>
         </form>
     </field>
 </record>
 
-<!--Bi Kmd Form View -->
-<record id="view_bi_kmd_form" model="ir.ui.view">
-    <field name="name">bi.kmd.form</field>
-    <field name="model">bi.kmd</field>
+<!--Bi Company Form View -->
+<record id="view_bi_company_form" model="ir.ui.view">
+    <field name="name">bi.company.form.view</field>
+    <field name="model">bi.company</field>
     <field name="arch" type="xml">
         <form>
-            <!-- KMD - Sales Dashboard -->
-            <sheet groups="IDC_BI_Management.group_bi_sd">
-                <form string="KMD - Sales Dashboard" version="7.0" edit="false" create="false"> 
-                    <iframe title="KMD - Sales Dashboard" width = "100%" height = "700" src="https://app.powerbi.com/view?r=eyJrIjoiNjRlODMyMjAtMjZhMC00N2Y5LWFkYzYtNmFjMmI1ZTcyNzgxIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
+            <!-- ATTRACTIVENESS SCORE REPORT -->
+            <sheet>
+                <form> 
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="IDC Monthly Reports" src="https://app.powerbi.com/view?r=eyJrIjoiNTllOTZjNzQtYzU5MS00YzE1LTg5MGUtMjBjMjljOTA2MDk5IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">IDC Monthly Reports - Mapview</h4>
+                        </div>
+
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="GEO Based Outlets" src="https://app.powerbi.com/view?r=eyJrIjoiZWQ1OTcwY2MtMTI4Zi00NmIxLTgzODktMWJjMWQxYWUwNDY2IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">GEO Based Outlets - Mapview</h4>
+                        </div>
+
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="ATTRACTIVENESS SCORE REPORT" src="https://app.powerbi.com/view?r=eyJrIjoiNmM5NTJhYmEtZWYyOS00Y2NjLTlhOTUtNjE4ZjMyN2ZjMGU0IiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">Attractiveness Score Report</h4>
+                        </div>
+                    </div>
                 </form>
-                </sheet>
+            </sheet>
+            <sheet>
+                <form>
+                    <div class="d-flex align-item-center justify-content-center" style="margin: 100px 0px 100px 0px; ">
+                        <div style="padding-right: 3%;">         
+                            <iframe style="border: 2px solid black; border-radius: 7px; height: 230px;" title="IDC Year By Year Sales Analysis Report For All Brand" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiYjU2NTg2ZTctMjk5Yi00NDg0LWFjMTctYjRkZDhhODQxNWJiIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+                            <h4 style="text-align: center; padding-top: 10px;">IDC Primary Year by Year Sales <br/> Analysis Report For All Brand</h4>
+                        </div>
+                    </div>
+                </form>
+            </sheet>
         </form>
     </field>
 </record>
 
-<!--Bi Fdn Form View -->
-<record id="view_bi_fdn_form" model="ir.ui.view">
-    <field name="name">bi.fdn.form</field>
-    <field name="model">bi.fdn</field>
-    <field name="arch" type="xml">
-        <form>
-            <!-- FDN Sales Dashboard -->
-            <sheet groups="IDC_BI_Management.group_bi_gm,IDC_BI_Management.group_bi_fdn">
-                <form string="FDN" version="7.0" edit="false" create="false"> 
-                    <iframe title="FDN" width="100%" height="700" src="https://app.powerbi.com/view?r=eyJrIjoiYzE4MDcwM2YtZDQxOC00ZGI3LTkyM2QtNWVjZGNiZWMyOWFhIiwidCI6IjYyZWJlOWY0LTE0MjMtNDdkNy1hNDg1LTYzYmQzMzhhZWE5YiIsImMiOjEwfQ%3D%3D" allowFullScreen="true"></iframe>
-                </form>
-                </sheet>
-        </form>
-    </field>
-</record>
-
-
-<!--Bi Report Action -->
-    <record id="action_bi_report" model="ir.actions.act_window">
-        <field name="name">Bi Report</field>
-        <field name="res_model">bi.report</field>
+<!--Bi Company -->
+    <record id="action_bi_company" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Bi Company</field>
+        <field name="res_model">bi.company</field>
         <field name="view_mode">form</field>
         <field name="help" type="html">
             <p class = "o_view_nocontent_smiling_face">
@@ -83,10 +214,11 @@
         </field>
     </record>
 
-<!--Bi District Action -->
-    <record id="action_bi_district" model="ir.actions.act_window">
-        <field name="name">Bi District</field>
-        <field name="res_model">bi.district</field>
+<!--Bi Nivea -->
+    <record id="action_bi_nivea" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Bi Nivea</field>
+        <field name="res_model">bi.nivea</field>
         <field name="view_mode">form</field>
         <field name="help" type="html">
             <p class = "o_view_nocontent_smiling_face">
@@ -95,30 +227,112 @@
         </field>
     </record>
 
-<!--Bi Kmd Action -->
-<record id="action_bi_kmd" model="ir.actions.act_window">
-    <field name="name">Bi KMD</field>
-    <field name="res_model">bi.kmd</field>
-    <field name="view_mode">form</field>
-    <field name="help" type="html">
-        <p class = "o_view_nocontent_smiling_face">
-                Upload your file!
-        </p>
-    </field>
-</record>
+<!--Bi Mondelez -->
+    <record id="action_bi_mondelez" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Bi Mondelez</field>
+        <field name="res_model">bi.mondelez</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
 
-<!--Bi Fdn Action -->
-<record id="action_bi_fdn" model="ir.actions.act_window">
-    <field name="name">Bi FDN</field>
-    <field name="res_model">bi.fdn</field>
-    <field name="view_mode">form</field>
-    <field name="help" type="html">
-        <p class = "o_view_nocontent_smiling_face">
-                Upload your file!
-        </p>
-    </field>
-</record>
+<!--Bi Kellogg -->
+    <record id="action_bi_kellogg" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Bi Kellogg</field>
+        <field name="res_model">bi.kellogg</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
 
+<!--Bi Ferrero -->
+    <record id="action_bi_ferrero" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Bi Ferrero</field>
+        <field name="res_model">bi.ferrero</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi Johnson -->
+    <record id="action_bi_johnson" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Johnson</field>
+        <field name="res_model">bi.johnson</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi Johnson -->
+    <record id="action_bi_johnson" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">Johnson</field>
+        <field name="res_model">bi.johnson</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi PMB -->
+    <record id="action_bi_pmb" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">PMB</field>
+        <field name="res_model">bi.pmb</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi ECOM -->
+    <record id="action_bi_ecom" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">ECOM</field>
+        <field name="res_model">bi.ecom</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+<!--Bi MT -->
+    <record id="action_bi_mt" model="ir.actions.act_window">
+    <field name="target">inline</field>
+        <field name="name">MT</field>
+        <field name="res_model">bi.mt</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+            <p class = "o_view_nocontent_smiling_face">
+                    Upload your file!
+            </p>
+        </field>
+    </record>
+
+
+    <!-- Menu Item Starts -->
 
     <menuitem
         id="bi"
@@ -126,31 +340,66 @@
         sequence = "40"/>
 
     <menuitem
-        id="bi_all"
-        name="IDC Total Sales"
+        id="bi_company"
+        name="Company"
         parent="bi"
-        action="action_bi_report" 
-        sequence = "20"/>
+        action="action_bi_company" 
+        sequence = "10"/>
     
     <menuitem
-        id="bi_district"
-        name="District Rank"
+        id="bi_nivea"
+        name="Nivea"
         parent="bi"
-        action="action_bi_district" 
-        sequence = "10"/>
+        action="action_bi_nivea" 
+        sequence = "20"/>
 
     <menuitem
-        id="bi_kmd"
-        name="KMD Sales"
+        id="bi_mondelez"
+        name="Mondelez"
         parent="bi"
-        action="action_bi_kmd" 
+        action="action_bi_mondelez" 
         sequence = "30"/>
 
     <menuitem
-        id="bi_fdn"
-        name="FDN Sales"
+        id="bi_kellogg"
+        name="Kellogg's"
         parent="bi"
-        action="action_bi_fdn" 
+        action="action_bi_kellogg" 
         sequence = "40"/>
+
+    <menuitem
+        id="bi_ferrero"
+        name="Ferrero"
+        parent="bi"
+        action="action_bi_ferrero" 
+        sequence = "50"/>
+
+    <menuitem
+        id="bi_johnson"
+        name="J&amp;J"
+        parent="bi"
+        action="action_bi_johnson" 
+        sequence = "60"/>
+
+    <menuitem
+        id="bi_pmb"
+        name="PMB"
+        parent="bi"
+        action="action_bi_pmb" 
+        sequence = "70"/>
+
+    <menuitem
+        id="bi_ecom"
+        name="ECOM"
+        parent="bi"
+        action="action_bi_ecom" 
+        sequence = "80"/>
+
+    <menuitem
+        id="bi_mt"
+        name="MT"
+        parent="bi"
+        action="action_bi_mt" 
+        sequence = "90"/>
 
 </odoo>

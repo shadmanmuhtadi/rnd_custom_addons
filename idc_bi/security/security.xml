@@ -7,21 +7,6 @@
             <field name="sequence">45</field>
         </record>
 
-        <record id="group_bi_gm" model="res.groups">
-            <field name="name">GM(F)</field>
-            <field name="category_id" ref="module_category_bi"/>
-        </record>
-
-        <record id="group_bi_sd" model="res.groups">
-            <field name="name">SD(D)</field>
-            <field name="category_id" ref="module_category_bi"/>
-        </record>
-
-        <record id="group_bi_fdn" model="res.groups">
-            <field name="name">FDN</field>
-            <field name="category_id" ref="module_category_bi"/>
-        </record>
-
         <record id="group_bi_ecom" model="res.groups">
             <field name="name">ECOM</field>
             <field name="category_id" ref="module_category_bi"/>
@@ -54,6 +39,16 @@
 
         <record id="group_bi_pmb" model="res.groups">
             <field name="name">PMB</field>
+            <field name="category_id" ref="module_category_bi"/>
+        </record>
+
+        <record id="group_bi_kellogg" model="res.groups">
+            <field name="name">KELLOGG</field>
+            <field name="category_id" ref="module_category_bi"/>
+        </record>
+
+        <record id="group_bi_ferrero" model="res.groups">
+            <field name="name">FERRERO</field>
             <field name="category_id" ref="module_category_bi"/>
         </record>
 

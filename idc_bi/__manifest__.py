@@ -2,10 +2,10 @@
     'name': 'IDC BI Management',
     'version':'1.0.0',
     'category': 'BI',
-    'author': 'Hemal Majumder',
+    'author': 'Hemal Majumder & Shadman Muhtadi',
     'summary': 'BI Management System',
     'description':"""BI Management System for IDC""",
-    'depends':['base','mail','product'], #dependencies on other module
+    'depends':[], #dependencies on other module
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
