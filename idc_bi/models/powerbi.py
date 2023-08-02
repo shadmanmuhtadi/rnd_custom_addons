@@ -35,6 +35,3 @@ class BiEcom(models.Model):
 class BiMT(models.Model):
     _name = "bi.mt"
     _description = "Bi MT"
-class BiTest(models.Model):
-    _name = "bi.test"
-    _description = "Bi Test"
